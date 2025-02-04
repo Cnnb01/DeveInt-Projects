@@ -1,0 +1,138 @@
+<%-include("partials/header.ejs")  %>
+<%-include("partials/navbar.ejs")  %>
+<body>
+    <div id="carouselExampleDark"  class="centerround carousel carousel-dark slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000">
+            <img id="pic1" src="/images/pic11.jpg" class="d-block " alt="frame picture">
+            <div class="carousel-caption d-none d-md-block">
+              <h1 style="color: white;" class="jomolhari-regular">Decorate your walls, elevate your space. </h1>
+              <p style="color: white;" class="jomolhari-regular roboto-condensed-normalText2">Frame your moments, frame your style.</p>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img id="pic1" src="/images/pic55.jpg" class="d-block" alt="frame picture">
+            <div class="carousel-caption d-none d-md-block">
+              <h1 style="color: white;" class="jomolhari-regular" >Frame your memories beautifully.</h1>
+              <p style="color: white;" class="jomolhari-regular roboto-condensed-normalText2">Transform your space with our designs.</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img id="pic1" src="/images/pic66.jpg" class="d-block" alt="frame picture">
+            <div class="carousel-caption d-none d-md-block">
+              <h1 style="color: white;" class="jomolhari-regular" >Your walls deserve some love!</h1>
+              <p style="color: white;" class="jomolhari-regular roboto-condensed-normalText2">Frames for every size and style.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div id="about" class="centerround">
+        <div class="aboutheader"><p class="jomolhari-headers ">About</p></div>
+        <div class="aboutpara"><p class="jomolhari-regular">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+    </div>
+    </div>
+    <div id="products" class="centerround">
+        <div class="aboutheader"><p class="jomolhari-headers ">Available Products</p></div>
+        <div class="prodpara">
+            <div class="productsbox ">
+                <div class="card col jomolhari-regular" style="width: 18rem;">
+                    <img src="/images/f1.webp" class="productframes"  alt="frame picture">
+                    <div class="card-body">
+                      <p class="card-text">
+                        Details<br>
+                        Size: A4<br>
+                        Color: White<br>
+                        <% let price = "1200" %>
+                        Price:<%= price %><br>
+                      </p>
+                      <p><a class="btn btn-outline-secondary" href="/pay">Add to cart</a></p>
+                    </div>
+                </div>
+                <div class="card col jomolhari-regular" style="width: 18rem;">
+                    <img src="/images/f2.webp" class="productframes"  alt="frame picture">
+                    <div class="card-body">
+                      <p class="card-text">
+                        Details<br>
+                        Size: A2<br>
+                        Color: Black<br>
+                        Price:3300<br>
+                      </p>
+                      <p><a class="btn btn-outline-secondary" href="/pay">Add to cart</a></p>
+                    </div>
+                </div>
+                <div class="card col jomolhari-regular" style="width: 18rem;">
+                    <img src="/images/f3.webp" class="productframes"  alt="frame picture">
+                    <div class="card-body">
+                      <p class="card-text">
+                        Details<br>
+                        Size: A3<br>
+                        Color: Light wooden wash<br>
+                        Price:1800<br>
+                      </p>
+                      <p><a class="btn btn-outline-secondary" href="/pay">Add to cart</a></p>
+                    </div>
+                </div>
+                <div class="card col jomolhari-regular" style="width: 18rem;">
+                    <img src="/images/f4.webp" class="productframes"  alt="frame picture">
+                    <div class="card-body">
+                      <p class="card-text">
+                        Details<br>
+                        Size: A5<br>
+                        Color: White<br>
+                        Price:1000<br>
+                      </p>
+                      <p><a class="btn btn-outline-secondary" href="/pay">Add to cart</a></p>
+                    </div>
+                </div>
+                <div class="card col jomolhari-regular" style="width: 18rem;">
+                    <img src="/images/f5.webp" class="productframes"  alt="frame picture">
+                    <div class="card-body">
+                      <p class="card-text">
+                        Details<br>
+                        Size: A2<br>
+                        Color: Dark Wooden Wash<br>
+                        Price:3300<br>
+                      </p>
+                      <p><a class="btn btn-outline-secondary" href="/pay">Add to cart</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="contacts" class="centerround">
+        <div class="contactheader"><p class="jomolhari-headers ">Contact for customised frames</p></div>
+        <div class="contactpara">
+        <p class="jomolhari-regular">
+            YOUR FIRST PURCHASE WITH 10% OFF<br>
+            Subscribe to our newsletter and get a discunt on your first purchase<br>
+        </p><br>
+        <form class="row g-3">
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="email@gmail.com">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Frame details</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="size and color"></textarea>
+          </div>
+            <div class="col-auto">
+              <button type="submit" class="btn btn-outline-secondary mb-3">Subscribe</button>
+            </div>
+          </form>
+    </div>
+    </div>
+</body>
+<%-include("partials/footer.ejs")  %>

@@ -1,0 +1,4 @@
+node_modules
+queries.sql
+package-lock.json
+.env

@@ -1,0 +1,53 @@
+<%-include("partials/header.ejs")  %>
+<%-include("partials/navbar.ejs")  %>
+<body>
+    <form class="form-control container-lg jomolhari-regular">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <select class="form-select" id="paymentMethod" aria-label="Default select example">
+            <option selected disabled>Payment options</option>
+            <option value="mpesa">Mpesa</option>
+            <option value="visa">Visa</option>
+            <option value="mastercard">Mastercard</option>
+        </select>
+    
+        <div class="mb-3" id="mpesaInput" style="display: none;">
+            <label for="mpesaNumber" class="form-label">Mpesa Number</label>
+            <input type="text" class="form-control" id="mpesaNumber" placeholder="Enter your Mpesa number">
+        </div>
+        <div class="mb-3" id="cardInput" style="display: none;">
+            <label for="cardNumber" class="form-label">Card Number</label>
+            <input type="text" class="form-control" id="cardNumber" placeholder="Enter your Card number">
+        </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Delivery details and location</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+            <img id="icons" src="/images/mpesa.png" alt="mpesa form of payment">
+            <img id="icons" src="/images/visa.png" alt="visa form of payment">
+            <img id="icons" src="/images/mastercard.png" alt="mastercard form of payment">
+        </div><br>
+        <button type="submit" class="btn btn-outline-secondary">Pay</button>
+    </form>
+    <script>
+        document.getElementById("paymentMethod").addEventListener("change", function () {
+            let paymentOption = this.value;
+            let mpesaInput = document.getElementById("mpesaInput");
+            let cardInput = document.getElementById("cardInput");
+            //inputs initialized
+            mpesaInput.style.display = "none";
+            cardInput.style.display = "none";
+            if (paymentOption === "mpesa") {
+                mpesaInput.style.display = "inline";
+            } else if (paymentOption === "visa" || paymentOption === "mastercard") {
+                cardInput.style.display = "block";
+            }
+        });
+    </script>
+    
+</body>
+<%-include("partials/footer.ejs")  %>
