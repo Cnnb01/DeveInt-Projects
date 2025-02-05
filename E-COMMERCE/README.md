@@ -1,11 +1,30 @@
-The above project is a simple frame selling e-commerce site which is still under development.
+# Frame E-Commerce Site 🖼️  
+A simple frame-selling e-commerce website built with Node.js and Express. This project is still under development.
 
-How to run:
+## 🚀 How to Run  
+1. Clone the repository:  
+   ```sh
+   git clone https://github.com/Cnnb01/DeveInt-Projects.git
+   cd E-COMMERCE
 
-On the terminal run nodemon .\server.js(needs nodemon to be installed) or node .\server.js
+2. Install dependencies
+   npm install
 
-Access (http://localhost:3000/) on the browser and click login if a customer or select 'admin' option to upload a picture to the db.
+3. Start the server
+With nodemon (if installed): nodemon server.js
+Without nodemon: node server.js
 
-As an admin, you will need a password, you can find it in the queries.sql file line 17
+4. Open the app in your browser:
+http://localhost:3000/
+Access the homepage: http://localhost:3000/home
+Access the admin panel: http://localhost:3000/admin
 
-The db is however local hence uploading might not work unless you have the db locally
+📦 Database Setup
+This project currently uses a local database, so some features (e.g., image uploads) may not work unless you set up the database manually, Remote database integration coming soon.
+
+Create a local MySQL/PostgreSQL database.
+Execute the SQL commands in queries.sql to set up tables and insert test data.
+Update database credentials in config.js (if applicable).
+
+Admin Login:
+The admin password is stored in queries.sql (Line 17).
