@@ -20,11 +20,14 @@ Access the homepage: http://localhost:3000/home
 Access the admin panel: http://localhost:3000/admin
 
 📦 Database Setup
+
 This project currently uses a local database, so some features (e.g., image uploads) may not work unless you set up the database manually, Remote database integration coming soon.
 
-Create a local MySQL/PostgreSQL database.
+Create a local PostgreSQL database.
+
 Execute the SQL commands in queries.sql to set up tables and insert test data.
 Update database credentials in config.js (if applicable).
 
-Admin Login:
+Admin Login
+
 The admin password is stored in queries.sql (Line 17).
