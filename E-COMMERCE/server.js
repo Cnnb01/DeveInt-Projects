@@ -4,14 +4,16 @@ import pg from "pg";
 import axios from "axios";
 // import session from "express-session";
 import multer from "multer";
+import env from "dotenv";
 
+env.config()
 const app = express()
 const port = 3000
 const db = new pg.Client({
     user:"postgres",
     host:"localhost",
     database:"Framely",
-    password:"postgres1",
+    password:process.env.DATABASE_PASSWORD,
     port: 5432
 });
 db.connect();
@@ -21,6 +23,7 @@ const upload = multer({storage: storage})
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended:true}));
 
+// login
 app.get("/", (req,res)=>{
     res.render("login.ejs")
 })
@@ -48,6 +51,7 @@ app.post("/", async(req,res)=>{
     }
 })
 
+// homepage
 app.get("/home", async(req, res)=>{
     try {
         const result = await db.query("SELECT * FROM Frames")
@@ -55,13 +59,14 @@ app.get("/home", async(req, res)=>{
     } catch (error) {
         console.log(error)
     }
-    
 })
 
+// pay
 app.get("/pay", (req, res)=>{
     res.render("payment.ejs")
 })
 
+// admin
 app.get("/admin", (req, res)=>{
     res.render("adminpage.ejs")
 })
@@ -82,4 +87,3 @@ app.post("/admin", upload.single("frame_image"), async(req,res)=>{
 app.listen(port, ()=>{
     console.log(`Server running on port ${port}`)
 });
-
