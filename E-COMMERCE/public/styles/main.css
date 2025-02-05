@@ -112,3 +112,25 @@
     margin: auto;
     padding: 10px;
 }
+
+/* admin page */
+.custom-form-container {
+    /* border: 1px solid black; */
+    max-width: 800px;
+    background: #c7c8ca;
+    padding: 20px;
+    border-radius: 10px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    margin-top: 100px;
+}
+.adminpage{
+    background-image:url("/images/frames11.jpg");
+}
+/* login */
+.loginform{
+    border: 1px solid black;
+    margin-top: 50%;
+}
+.login{
+    background-image:url("/images/wallofframes.jpg");
+}

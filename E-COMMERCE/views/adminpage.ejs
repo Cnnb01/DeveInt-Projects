@@ -1,0 +1,48 @@
+<%-include("partials/header.ejs")  %>
+<body class="adminpage jomolhari-regular">
+    <div class="container mt-5 ">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col-sm-10">
+                <div class="custom-form-container">
+                    <form action="/upload-frame" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="frameSize" class="form-label">Frame Size</label>
+                            <select class="form-control" id="frameSize" name="frame_size" required>
+                                <option value="A-5">A-5</option>
+                                <option value="A-4">A-4</option>
+                                <option value="A-3">A-3</option>
+                                <option value="A-2">A-2</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="frameColor" class="form-label">Color</label>
+                            <select class="form-control" id="frameColor" name="color" required>
+                                <option value="Black">Black</option>
+                                <option value="White">White</option>
+                                <option value="Light wooden wash">Light wooden wash</option>
+                                <option value="Dark wooden wash">Dark wooden wash</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="framePrice" class="form-label">Price (KES)</label>
+                            <select class="form-control" id="framePrice" name="price" required>
+                                <option value="1000">1000</option>
+                                <option value="1200">1200</option>
+                                <option value="1800">1800</option>
+                                <option value="3300">3300</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFile" class="form-label">Upload Frame Image</label>
+                            <input class="form-control" type="file" id="formFile" name="frame_image" accept="image/*" required>
+                        </div>
+                        <button type="submit" class="btn btn-outline-light w-100">Upload Frame</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> -->
+</body>
+</html>
