@@ -48,67 +48,20 @@
         <div class="aboutheader"><p class="jomolhari-headers ">Available Products</p></div>
         <div class="prodpara">
             <div class="productsbox ">
+              <% frames.forEach(frame=>{ %>
                 <div class="card col jomolhari-regular" style="width: 18rem;">
-                    <img src="/images/f1.webp" class="productframes"  alt="frame picture">
+                    <img src="data:image/jpeg;base64,<%= frame.image_data.toString('base64') %>" class="productframes"  alt="frame picture"> <%# converting the binary image data from memory storage into a Base64-encoded image so it can be displayed directly %>
                     <div class="card-body">
                       <p class="card-text">
                         Details<br>
-                        Size: A4<br>
-                        Color: White<br>
-                        <% let price = "1200" %>
-                        Price:<%= price %><br>
+                        Size: <%= frame.frame_size %><br>
+                        Color: <%= frame.color %><br>
+                        Price:<%= frame.price %><br>
                       </p>
                       <p><a class="btn btn-outline-secondary" href="/pay">Add to cart</a></p>
                     </div>
                 </div>
-                <div class="card col jomolhari-regular" style="width: 18rem;">
-                    <img src="/images/f2.webp" class="productframes"  alt="frame picture">
-                    <div class="card-body">
-                      <p class="card-text">
-                        Details<br>
-                        Size: A2<br>
-                        Color: Black<br>
-                        Price:3300<br>
-                      </p>
-                      <p><a class="btn btn-outline-secondary" href="/pay">Add to cart</a></p>
-                    </div>
-                </div>
-                <div class="card col jomolhari-regular" style="width: 18rem;">
-                    <img src="/images/f3.webp" class="productframes"  alt="frame picture">
-                    <div class="card-body">
-                      <p class="card-text">
-                        Details<br>
-                        Size: A3<br>
-                        Color: Light wooden wash<br>
-                        Price:1800<br>
-                      </p>
-                      <p><a class="btn btn-outline-secondary" href="/pay">Add to cart</a></p>
-                    </div>
-                </div>
-                <div class="card col jomolhari-regular" style="width: 18rem;">
-                    <img src="/images/f4.webp" class="productframes"  alt="frame picture">
-                    <div class="card-body">
-                      <p class="card-text">
-                        Details<br>
-                        Size: A5<br>
-                        Color: White<br>
-                        Price:1000<br>
-                      </p>
-                      <p><a class="btn btn-outline-secondary" href="/pay">Add to cart</a></p>
-                    </div>
-                </div>
-                <div class="card col jomolhari-regular" style="width: 18rem;">
-                    <img src="/images/f5.webp" class="productframes"  alt="frame picture">
-                    <div class="card-body">
-                      <p class="card-text">
-                        Details<br>
-                        Size: A2<br>
-                        Color: Dark Wooden Wash<br>
-                        Price:3300<br>
-                      </p>
-                      <p><a class="btn btn-outline-secondary" href="/pay">Add to cart</a></p>
-                    </div>
-                </div>
+                <% }) %>
             </div>
         </div>
     </div>

@@ -1,9 +1,9 @@
 import express from "express";
 import bodyParser from "body-parser";
-// import Client from "pg";
 import pg from "pg";
 import axios from "axios";
 // import session from "express-session";
+import multer from "multer";
 
 const app = express()
 const port = 3000
@@ -15,6 +15,8 @@ const db = new pg.Client({
     port: 5432
 });
 db.connect();
+const storage = multer.memoryStorage() //configures multer to temporarily store uploaded files in memory (RAM) instead of saving them to disk
+const upload = multer({storage: storage})
 
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended:true}));
@@ -46,8 +48,14 @@ app.post("/login", async(req,res)=>{
     }
 })
 
-app.get("/", (req, res)=>{
-    res.render("index.ejs")
+app.get("/", async(req, res)=>{
+    try {
+        const result = await db.query("SELECT * FROM Frames")
+        res.render("index.ejs",{frames: result.rows})
+    } catch (error) {
+        console.log(error)
+    }
+    
 })
 
 app.get("/pay", (req, res)=>{
@@ -56,6 +64,19 @@ app.get("/pay", (req, res)=>{
 
 app.get("/admin", (req, res)=>{
     res.render("adminpage.ejs")
+})
+app.post("/admin", upload.single("frame_image"), async(req,res)=>{
+    const size = req.body.frame_size
+    const color = req.body.color
+    const price = req.body.price
+    const image = req.file ? req.file.buffer : null;
+    try {
+        const result = await db.query("INSERT INTO Frames (frame_size, color, price, image_data) VALUES ($1, $2, $3, $4)",[size,color,price,image])
+        console.log("Frame uploaded to db =>",result)
+        res.send("frame uploaded successfully");
+    } catch (error) {
+        console.log(error)
+    }
 })
 
 app.listen(port, ()=>{
