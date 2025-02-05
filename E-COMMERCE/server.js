@@ -21,10 +21,10 @@ const upload = multer({storage: storage})
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.get("/login", (req,res)=>{
+app.get("/", (req,res)=>{
     res.render("login.ejs")
 })
-app.post("/login", async(req,res)=>{
+app.post("/", async(req,res)=>{
     const role = req.body.role
     const adminpassword =req.body.adminPassword
     // console.log(role)
@@ -40,7 +40,7 @@ app.post("/login", async(req,res)=>{
             if (role === "admin" && adminpassword === storedpswd){
                 res.redirect("/admin")
             }else{
-                res.redirect("/")
+                res.redirect("/home")
             }
         }
     } catch (error) {
@@ -48,7 +48,7 @@ app.post("/login", async(req,res)=>{
     }
 })
 
-app.get("/", async(req, res)=>{
+app.get("/home", async(req, res)=>{
     try {
         const result = await db.query("SELECT * FROM Frames")
         res.render("index.ejs",{frames: result.rows})
