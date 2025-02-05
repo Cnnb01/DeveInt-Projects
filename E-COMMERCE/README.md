@@ -16,7 +16,6 @@ A simple frame-selling e-commerce website built with Node.js and Express. This p
 With nodemon (if installed): 
     ```sh 
     nodemon server.js
-
 Without nodemon:
     ```sh
     node server.js
