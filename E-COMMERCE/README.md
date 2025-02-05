@@ -13,9 +13,11 @@ A simple frame-selling e-commerce website built with Node.js and Express. This p
 
 3. Start the server
 With nodemon (if installed): 
-    ```sh nodemon server.js
+    ```sh 
+    nodemon server.js
 Without nodemon: 
-    ```sh node server.js
+    ```sh 
+    node server.js
 
 4. Open the app in your browser:
 http://localhost:3000/
