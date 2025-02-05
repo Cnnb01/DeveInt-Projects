@@ -8,7 +8,7 @@ A simple frame-selling e-commerce website built with Node.js and Express. This p
    cd E-COMMERCE
 
 2. Install dependencies
-   npm install
+   npm i
 
 3. Start the server
 With nodemon (if installed): nodemon server.js
