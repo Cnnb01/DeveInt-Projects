@@ -81,15 +81,12 @@
                 cardInput.style.display = "block";
             }
         });
-
-        // for modal
+        // for modal from bootstrap
         const myModal = document.getElementById('myModal')
         const myInput = document.getElementById('myInput')
-
         myModal.addEventListener('shown.bs.modal', () => {
             myInput.focus()
         })
     </script>
-    
 </body>
 <%-include("partials/footer.ejs")  %>
