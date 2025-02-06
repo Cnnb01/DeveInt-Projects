@@ -62,9 +62,9 @@ app.get("/home", async(req, res)=>{
 })
 
 // pay
-app.get("/pay", (req, res)=>{
-    res.render("payment.ejs")
-})
+// app.get("/pay", (req, res)=>{
+//     res.render("payment.ejs")
+// })
 
 // admin
 app.get("/admin", (req, res)=>{
@@ -81,6 +81,17 @@ app.post("/admin", upload.single("frame_image"), async(req,res)=>{
         res.send("frame uploaded successfully");
     } catch (error) {
         console.log(error)
+    }
+})
+
+// deleting a frame from db
+app.get("/pay/:frame_id", async(req,res)=>{
+    const frameId = req.params.frame_id
+    try {
+        const result = await db.query("DELETE FROM Frames WHERE frame_id = $1",[frameId] )
+        res.render("payment.ejs")
+    } catch (error) {
+        console.log("CAUGHT ERROR=>",error)
     }
 })
 
