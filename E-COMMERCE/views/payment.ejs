@@ -1,38 +1,72 @@
 <%-include("partials/header.ejs")  %>
 <%-include("partials/navbar.ejs")  %>
-<body>
-    <form class="form-control container-lg jomolhari-regular">
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-        <select class="form-select" id="paymentMethod" aria-label="Default select example">
-            <option selected disabled>Payment options</option>
-            <option value="mpesa">Mpesa</option>
-            <option value="visa">Visa</option>
-            <option value="mastercard">Mastercard</option>
-        </select>
-    
-        <div class="mb-3" id="mpesaInput" style="display: none;">
-            <label for="mpesaNumber" class="form-label">Mpesa Number</label>
-            <input type="text" class="form-control" id="mpesaNumber" placeholder="Enter your Mpesa number">
-        </div>
-        <div class="mb-3" id="cardInput" style="display: none;">
-            <label for="cardNumber" class="form-label">Card Number</label>
-            <input type="text" class="form-control" id="cardNumber" placeholder="Enter your Card number">
-        </div>
+<body class="jomolhari-regular payments">
+    <div class="d-flex align-items-center justify-content-center vh-100">
+        <form class="form-container paymentsform">
+            <h4 class="text-center mb-4">Payment Form</h4>
 
-        <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Delivery details and location</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-        <div class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-            <img id="icons" src="/images/mpesa.png" alt="mpesa form of payment">
-            <img id="icons" src="/images/visa.png" alt="visa form of payment">
-            <img id="icons" src="/images/mastercard.png" alt="mastercard form of payment">
-        </div><br>
-        <button type="submit" class="btn btn-outline-secondary">Pay</button>
-    </form>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="paymentMethod" class="form-label">Payment options</label>
+                <select class="form-select" id="paymentMethod">
+                    <option selected disabled>Select Payment Method</option>
+                    <option value="mpesa">Mpesa</option>
+                    <option value="visa">Visa</option>
+                    <option value="mastercard">Mastercard</option>
+                </select>
+            </div>
+
+            <div class="mb-3" id="mpesaInput" style="display: none;">
+                <label for="mpesaNumber" class="form-label">Mpesa Number</label>
+                <input type="text" class="form-control" id="mpesaNumber" placeholder="Enter your Mpesa number">
+            </div>
+
+            <div class="mb-3" id="cardInput" style="display: none;">
+                <label for="cardNumber" class="form-label">Card Number</label>
+                <input type="text" class="form-control" id="cardNumber" placeholder="Enter your Card number">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Delivery details and location</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+
+            <!-- Payment Icons -->
+            <div class="d-flex justify-content-center payment-icons">
+                <img src="/images/mpesa.png" alt="Mpesa">
+                <img src="/images/visa.png" alt="Visa">
+                <img src="/images/mastercard.png" alt="Mastercard">
+            </div>
+
+            <!-- Pay Button & Modal -->
+            <div class="text-center mt-3">
+                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Pay</button>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" >
+                    <div class="modal-content" id="exampleModal1">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Thank you for supporting our business 🎉</h1>
+                            <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                        </div><hr>
+                        <div class="modal-body">
+                            <p>Thank you for your purchase! You will receive a prompt to make your payment 🙂</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
     <script>
         document.getElementById("paymentMethod").addEventListener("change", function () {
             let paymentOption = this.value;
@@ -47,6 +81,14 @@
                 cardInput.style.display = "block";
             }
         });
+
+        // for modal
+        const myModal = document.getElementById('myModal')
+        const myInput = document.getElementById('myInput')
+
+        myModal.addEventListener('shown.bs.modal', () => {
+            myInput.focus()
+        })
     </script>
     
 </body>

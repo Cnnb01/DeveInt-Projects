@@ -1,16 +1,20 @@
 /* navbar */
 #navbar{
-    /* border: 1px solid black; */
+    /* border: 1px solid blue; */
     background-color: #E2E2E2;
     margin: 20px;
     border-radius: 10px;
+}
+#h2{
+    /* border: 1px solid black; */
+    margin-left: 15px;
 }
 #icons{
     margin-left: 10px;
     margin-right: 10px;
 }
 #compname{
-    /* border: 1px solid black; */
+    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -83,10 +87,11 @@
 }
 .productsbox{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     gap: 40px;
     /* border: 1px solid palevioletred; */
-    overflow: hidden;
+    /* overflow: auto; */
 }
 .productframes{
     border-radius: 5px;
@@ -120,12 +125,12 @@
     background: #c7c8ca;
     padding: 20px;
     border-radius: 10px;
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     margin-top: 100px;
 }
 .adminpage{
     background-image:url("/images/frames11.jpg");
 }
+
 /* login */
 .loginform{
     border: 1px solid black;
@@ -133,4 +138,31 @@
 }
 .login{
     background-image:url("/images/wallofframes.jpg");
+}
+
+/* payment form */
+ /* center the form on page */
+.form-container {
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the payment icons */
+.payment-icons img {
+    /* width: 50px; */
+    /* height: 30px; */
+    margin: 5px;
+}
+#exampleModal1{
+    background-color: #e2e2e2;
+}
+.payments{
+    background-color: #bcb9b9;
+}
+.paymentsform{
+    background-color: #e2e2e2;
 }
