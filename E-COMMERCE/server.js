@@ -4,7 +4,7 @@ import pg from "pg";
 import multer from "multer";
 import env from "dotenv";
 import jwt from "jsonwebtoken";
-import cookieParser from "cookie-parser";
+import cookieParser from "cookie-parser"; // store the JWT in a cookie instead of sending it in the authorization header
 
 env.config()
 const app = express()
@@ -24,7 +24,7 @@ const upload = multer({storage: storage})
 app.use(express.static("public"))
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.json())
-app.use(cookieParser()); 
+app.use(cookieParser());
 
 //key used to sign JWTs
 const SECRET_KEY = process.env.JWT_SECRET
@@ -47,9 +47,12 @@ app.post("/", async(req,res)=>{
             if (adminpassword === storedpswd){
                 // generate JWT
                 const token = jwt.sign({role:role},SECRET_KEY,{ expiresIn: "1h" })
-                // send token as response
+                // console.log("Generated Token =>", token);
+                // const decoded = jwt.decode(token);
+                // console.log("Decoded JWT =>", decoded);
+                // set token as HTTP-only cookie means JavaScript cannot access it on the frontend (prevents XSS attacks).
                 res.cookie("token", token, {
-                    httpOnly: true,
+                    httpOnly: true, //prevent JavaScript access
                     secure: process.env.NODE_ENV === "production",
                     maxAge: 3600000
                 });
@@ -74,8 +77,7 @@ app.post("/", async(req,res)=>{
 // middleware for routes protection
 const verifyUser = (req,res,next)=>{
     const token = req.cookies.token //get token from cookies
-    // const token = authHeader.split(" ")[1] //Bearer TOKEN
-    jwt.verify(token, SECRET_KEY, (err, decoded)=>{
+    jwt.verify(token, SECRET_KEY, (err, decoded)=>{ //decoded contains the user payload 
         if(err){
             return res.status(403).json({message:"Invalid token"})
         }
