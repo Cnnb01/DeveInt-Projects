@@ -2,12 +2,12 @@
 <%-include("partials/navbar.ejs")  %>
 <body class="jomolhari-regular payments">
     <div class="d-flex align-items-center justify-content-center vh-100">
-        <form class="form-container paymentsform">
+        <form class="form-container paymentsform" id="myForm">
             <h4 class="text-center mb-4">Payment Form</h4>
 
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" required>
+                <input type="email" class="form-control" id="myInputt" required>
             </div>
 
             <div class="mb-3">
@@ -22,29 +22,27 @@
 
             <div class="mb-3" id="mpesaInput" style="display: none;">
                 <label for="mpesaNumber" class="form-label">Mpesa Number</label>
-                <input type="text" class="form-control" id="mpesaNumber" placeholder="Enter your Mpesa number">
+                <input type="text" class="form-control" id="myInputt" placeholder="Enter your Mpesa number">
             </div>
 
             <div class="mb-3" id="cardInput" style="display: none;">
                 <label for="cardNumber" class="form-label">Card Number</label>
-                <input type="text" class="form-control" id="cardNumber" placeholder="Enter your Card number">
+                <input type="text" class="form-control" id="myInputt" placeholder="Enter your Card number">
             </div>
 
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Delivery details and location</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="myInputt" rows="3"></textarea>
             </div>
 
-            <!-- Payment Icons -->
             <div class="d-flex justify-content-center payment-icons">
                 <img src="/images/mpesa.png" alt="Mpesa">
                 <img src="/images/visa.png" alt="Visa">
                 <img src="/images/mastercard.png" alt="Mastercard">
             </div>
 
-            <!-- Pay Button & Modal -->
             <div class="text-center mt-3">
-                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Pay</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Pay</button> <!--onclick="document.getElementById('myInputt').value='' "-->
             </div>
 
             <!-- Modal -->
@@ -64,7 +62,6 @@
                     </div>
                 </div>
             </div>
-
         </form>
     </div>
     <script>
@@ -81,12 +78,20 @@
                 cardInput.style.display = "block";
             }
         });
-        // for modal from bootstrap
-        const myModal = document.getElementById('myModal')
-        const myInput = document.getElementById('myInput')
-        myModal.addEventListener('shown.bs.modal', () => {
-            myInput.focus()
+
+        //for form clearing
+        const form = document.getElementsById('myForm')
+        form.addEventListener('submit', function(event){
+            event.preventDefault()
+            form.reset()
         })
+
+        // for modal from bootstrap
+        // const myModal = document.getElementById('myModal')
+        // const myInput = document.getElementById('myInput')
+        // myModal.addEventListener('shown.bs.modal', () => {
+        //     myInput.focus()
+        // })
     </script>
 </body>
 <%-include("partials/footer.ejs")  %>
