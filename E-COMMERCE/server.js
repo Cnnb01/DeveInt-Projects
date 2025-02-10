@@ -113,6 +113,7 @@ app.post("/admin", upload.single("frame_image"), async(req,res)=>{
         const result = await db.query("INSERT INTO Frames (frame_size, color, price, image_data) VALUES ($1, $2, $3, $4)",[size,color,price,image])
         console.log("Frame uploaded to db =>",result)
         res.send("frame uploaded successfully");
+        // res.redirect("/admin");
     } catch (error) {
         console.log(error)
     }

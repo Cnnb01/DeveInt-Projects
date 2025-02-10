@@ -22,17 +22,17 @@
 
             <div class="mb-3" id="mpesaInput" style="display: none;">
                 <label for="mpesaNumber" class="form-label">Mpesa Number</label>
-                <input type="text" class="form-control" id="myInputt" placeholder="Enter your Mpesa number">
+                <input type="text" class="form-control" id="myInputt1" placeholder="Enter your Mpesa number">
             </div>
 
             <div class="mb-3" id="cardInput" style="display: none;">
                 <label for="cardNumber" class="form-label">Card Number</label>
-                <input type="text" class="form-control" id="myInputt" placeholder="Enter your Card number">
+                <input type="text" class="form-control" id="myInputt2" placeholder="Enter your Card number">
             </div>
 
             <div class="mb-3">
                 <label for="exampleFormControlTextarea1" class="form-label">Delivery details and location</label>
-                <textarea class="form-control" id="myInputt" rows="3"></textarea>
+                <textarea class="form-control" id="myInputt3" rows="3"></textarea>
             </div>
 
             <div class="d-flex justify-content-center payment-icons">
@@ -57,13 +57,14 @@
                             <p>Thank you for your purchase! You will receive a prompt to make your payment 🙂</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
     </div>
+
     <script>
         document.getElementById("paymentMethod").addEventListener("change", function () {
             let paymentOption = this.value;
@@ -79,19 +80,14 @@
             }
         });
 
-        //for form clearing
-        const form = document.getElementsById('myForm')
-        form.addEventListener('submit', function(event){
-            event.preventDefault()
-            form.reset()
-        })
-
-        // for modal from bootstrap
-        // const myModal = document.getElementById('myModal')
-        // const myInput = document.getElementById('myInput')
-        // myModal.addEventListener('shown.bs.modal', () => {
-        //     myInput.focus()
-        // })
+        //for form clearing<still debugging>
+        document.getElementById("closeModal").addEventListener("click", function () {
+            document.getElementById("myForm").reset();
+                //hide the dynamically shown input fields
+            document.getElementById("mpesaInput").style.display = "none";
+            document.getElementById("cardInput").style.display = "none";
+        });
     </script>
+
 </body>
 <%-include("partials/footer.ejs")  %>
