@@ -101,7 +101,8 @@ app.get("/admin", verifyUser, (req, res)=>{
     if(req.user.role === "admin"){
         res.render("adminpage.ejs")
     } else {
-        res.status(403).json({message: "Access denied"})
+        res.redirect("/home")
+        // res.status(403).json({message: "Access denied"})
     }
 })
 app.post("/admin", upload.single("frame_image"), async(req,res)=>{
