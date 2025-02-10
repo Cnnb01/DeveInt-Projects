@@ -42,7 +42,7 @@
             </div>
 
             <div class="text-center mt-3">
-                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Pay</button> <!--onclick="document.getElementById('myInputt').value='' "-->
+                <button type="submit" onclick="clearForm()" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal">Pay</button> <!--onclick="document.getElementById('myInputt').value='' "-->
             </div>
 
             <!-- Modal -->
@@ -81,12 +81,12 @@
         });
 
         //for form clearing<still debugging>
-        document.getElementById("closeModal").addEventListener("click", function () {
-            document.getElementById("myForm").reset();
-                //hide the dynamically shown input fields
-            document.getElementById("mpesaInput").style.display = "none";
-            document.getElementById("cardInput").style.display = "none";
-        });
+        function clearForm() {
+            document.getElementById('myInputt').value = '';
+            document.getElementById('myInputt1').value = '';
+            document.getElementById('myInputt2').value = '';
+            document.getElementById('myInputt3').value = '';
+        }
     </script>
 
 </body>
