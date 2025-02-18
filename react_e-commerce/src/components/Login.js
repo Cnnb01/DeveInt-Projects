@@ -1,31 +1,46 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [role, setRole] = useState("customer")
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+
     const togglePassword = (e) =>{
-        setRole(e.target.value)
+        setRole((prevRole)=>e.target.value)
+        console.log("Selected role:", e.target.value);
     }
+    const handleLogin = (e) => {
+        e.preventDefault(); //prevent page refresh
+        console.log("Logging in as:", role);
+        if (role === "admin") {
+            navigate("/admin");
+        } else {
+            navigate("/home");
+        }
+    };
 
     return(
-        <body className="login jomolhari-regular">
-        <div className="container mt-5 ">
+        // <body className="login jomolhari-regular">
+        <div className="container mt-5 login jomolhari-regular">
         <div className="row justify-content-center">
             <div className="col-md-6 col-lg-4">
                 <div className="card p-4 loginform">
                     <h3 className="text-center">Login</h3>
-                    <form action="/" method="POST">
+                    <form onSubmit={handleLogin}>
                         <div className="mb-3">
                             <label htmlFor="role" className="form-label">Select Role</label>
-                            <select className="form-control" id="role" name="role" required onChange={togglePassword}>
+                            <select className="form-control" id="role" name="role" required value={role} onChange={togglePassword}>
                                 <option value="customer">Customer</option>
                                 <option value="admin">Admin</option>
                             </select>
                         </div>
+                        {console.log("Current role state:", role)}
 
                         {role === "admin" && (
                             <div className="mb-3" id="adminPasswordField">
                                 <label htmlFor="adminPassword" className="form-label">Admin Password</label>
-                                <input type="password" className="form-control" id="adminPassword" name="adminPassword" />
+                                <input className="form-control" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter Admin Password"/>
                             </div>
                         )}
                         <button type="submit" className="btn btn-outline-secondary w-100">Login</button>
@@ -34,7 +49,7 @@ const Login = () => {
             </div>
         </div>
     </div>
-    </body>
+    // </body>
     )
 }
 
