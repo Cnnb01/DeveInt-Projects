@@ -1,4 +1,19 @@
+import React, { useState, useEffect } from "react";
+import { fetchFrames } from "../api";
 const HomePage = () => {
+  const [frames, setFrames] = useState([]);
+
+    useEffect(() => {
+      const getFrames = async () => {
+          try {
+              const data = await fetchFrames();
+              setFrames(data);
+          } catch (error) {
+              console.error("Failed to fetch frames", error);
+          }
+      };
+      getFrames();
+  }, []);
     return(
         <>
         <div id="carouselExampleDark"  className="centerround carousel carousel-dark slide">
@@ -49,9 +64,9 @@ const HomePage = () => {
     <div id="products" className="centerround">
         <div className="aboutheader"><p className="jomolhari-headers ">Available Products</p></div>
         <div className="prodpara">
-            {/* <div className="productsbox ">
+            <div className="productsbox ">
               { frames.map((frame)=>(
-                <div key={frame.frame_id} className="card col jomolhari-regular" style="width: 18rem;">
+                <div key={frame.frame_id} className="card col jomolhari-regular" style={{width: "18rem"}}>
                     <img src={`data:image/jpeg;base64, ${frame.image_data.toString('base64')}`} className="productframes"  alt="frame picture" />
                     <div className="card-body">
                       <p className="card-text">
@@ -64,7 +79,7 @@ const HomePage = () => {
                     </div>
                 </div>
                 ))}
-            </div> */}
+            </div>
         </div>
     </div>
 

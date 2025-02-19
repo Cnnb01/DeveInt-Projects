@@ -10,19 +10,19 @@ import React, { useState, useEffect } from "react";
 import { fetchFrames } from "./api.js";
 
 function App() {
-  const [frames, setFrames] = useState([]);
+//   const [frames, setFrames] = useState([]);
 
-  useEffect(() => {
-    const getFrames = async () => {
-        try {
-            const data = await fetchFrames();
-            setFrames(data);
-        } catch (error) {
-            console.error("Failed to fetch frames", error);
-        }
-    };
-    getFrames();
-}, []); // Dependency array is fine
+//   useEffect(() => {
+//     const getFrames = async () => {
+//         try {
+//             const data = await fetchFrames();
+//             setFrames(data);
+//         } catch (error) {
+//             console.error("Failed to fetch frames", error);
+//         }
+//     };
+//     getFrames();
+// }, []); // Dependency array is fine
 
   return (
     <Router>

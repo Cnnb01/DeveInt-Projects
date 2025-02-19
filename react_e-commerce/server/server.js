@@ -23,7 +23,7 @@ const storage = multer.memoryStorage() //configures multer to temporarily store 
 const upload = multer({storage: storage})
 
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({ origin: "http://localhost:3000", credentials: true })); //CORS allows the frontend to make API requests to the backend.
 app.use(express.json())
 app.use(cookieParser());
 
@@ -66,7 +66,11 @@ app.post("/", async(req,res)=>{
     }
 });
 
-// Fetch all frames
+app.get("/", (req, res) => {
+    res.json({ message: "Welcome to Framely!" });
+});
+
+//fetching frames
 app.get("/frames", async (req, res) => {
     try {
         const result = await db.query("SELECT * FROM Frames");
@@ -78,5 +82,5 @@ app.get("/frames", async (req, res) => {
 });
 
 app.listen(port, ()=>{
-    console.log(`Server running on portt ${port}`)
+    console.log(`Server running on port ${port}`)
 });

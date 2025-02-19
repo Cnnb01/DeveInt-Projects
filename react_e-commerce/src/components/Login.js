@@ -7,8 +7,9 @@ const Login = () => {
     const navigate = useNavigate();
 
     const togglePassword = (e) =>{
-        setRole((prevRole)=>e.target.value)
-        console.log("Selected role:", e.target.value);
+        const newRole = e.target.value
+        setRole(newRole)
+        console.log("Selected role:", newRole);
     }
     const handleLogin = (e) => {
         e.preventDefault(); //prevent page refresh
