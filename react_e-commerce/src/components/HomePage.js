@@ -67,7 +67,7 @@ const HomePage = () => {
             <div className="productsbox ">
               { frames.map((frame)=>(
                 <div key={frame.frame_id} className="card col jomolhari-regular" style={{width: "18rem"}}>
-                    <img src={`data:image/jpeg;base64, ${frame.image_data.toString('base64')}`} className="productframes"  alt="frame picture" />
+                <img src={`data:image/jpeg;base64,${frame.image_data}`} className="productframes" alt="frame picture" />
                     <div className="card-body">
                       <p className="card-text">
                         Details<br />

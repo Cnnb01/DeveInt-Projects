@@ -74,7 +74,13 @@ app.get("/", (req, res) => {
 app.get("/frames", async (req, res) => {
     try {
         const result = await db.query("SELECT * FROM Frames");
-        res.json(result.rows);
+        //converting image_data (binary) to base64
+        const frames = result.rows.map(frame => ({
+            ...frame,
+            image_data: frame.image_data ? frame.image_data.toString("base64") : null
+        }));
+        // console.log("ALL FRAMES=>",frames);
+        res.json(frames);
     } catch (error) {
         console.error("Error:", error);
         res.status(500).json({ message: "Server error" });
