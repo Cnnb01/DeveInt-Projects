@@ -66,6 +66,27 @@ app.post("/", async(req,res)=>{
     }
 });
 
+const verifyUser = (req,res,next)=>{
+    const token = req.cookies.token //get token from cookies
+    jwt.verify(token, SECRET_KEY, (err, decoded)=>{ //decoded contains the user payload 
+        if(err){
+            return res.status(403).json({message:"Invalid token"})
+        }
+        req.user = decoded
+        next()
+    })
+}
+
+// Protect the admin route
+app.get("/admin", verifyUser, (req, res) => {
+    if (req.user.role === "admin") {
+        res.json({ success: true, message: "Welcome Admin" });
+    } else {
+        res.status(403).json({ message: "Access denied" });
+    }
+});
+
+
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to Framely!" });
 });

@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { login } from "../api";
 
 const Login = () => {
     const [role, setRole] = useState("customer")
@@ -11,13 +12,18 @@ const Login = () => {
         setRole(newRole)
         console.log("Selected role:", newRole);
     }
-    const handleLogin = (e) => {
+    const handleLogin = async(e) => {
         e.preventDefault(); //prevent page refresh
         console.log("Logging in as:", role);
-        if (role === "admin") {
-            navigate("/admin");
-        } else {
-            navigate("/home");
+        try {
+            const resp = await login(role,password)
+            if(resp.success){
+                navigate(role === "admin"? "/admin" : "/home")
+            }else{
+                alert("login failed")
+            }
+        } catch (error) {
+            console.error("Login error: =>", error);
         }
     };
 
