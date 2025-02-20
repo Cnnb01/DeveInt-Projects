@@ -12,6 +12,20 @@ export const login = async (role, adminPassword) => {
         return { success: false, message: "Login failed" };
     }
 };
+// const handleLogin = async(e) => {
+//     e.preventDefault(); //prevent page refresh
+//     console.log("Logging in as:", role);
+//     try {
+//         const resp = await login(role,password)
+//         if(resp.success){
+//             navigate(role === "admin"? "/admin" : "/home")
+//         }else{
+//             alert("login failed")
+//         }
+//     } catch (error) {
+//         console.error("Login error: =>", error);
+//     }
+// };
 
   //   useEffect(() => {
   //     const getFrames = async () => {

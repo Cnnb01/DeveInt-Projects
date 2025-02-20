@@ -8,7 +8,7 @@ const Adminpage = () => {
                 <div className="custom-form-container">
                     <form action="/admin" method="POST" enctype="multipart/form-data">
                         <div className="mb-3">
-                            <label for="frameSize" className="form-label">Frame Size</label>
+                            <label htmlFor="frameSize" className="form-label">Frame Size</label>
                             <select className="form-control" id="frameSize" name="frame_size" required>
                                 <option value="A-5">A-5</option>
                                 <option value="A-4">A-4</option>
@@ -17,7 +17,7 @@ const Adminpage = () => {
                             </select>
                         </div>
                         <div className="mb-3">
-                            <label for="frameColor" className="form-label">Color</label>
+                            <label htmlFor="frameColor" className="form-label">Color</label>
                             <select className="form-control" id="frameColor" name="color" required>
                                 <option value="Black">Black</option>
                                 <option value="White">White</option>
@@ -26,7 +26,7 @@ const Adminpage = () => {
                             </select>
                         </div>
                         <div className="mb-3">
-                            <label for="framePrice" className="form-label">Price (KES)</label>
+                            <label htmlFor="framePrice" className="form-label">Price (KES)</label>
                             <select className="form-control" id="framePrice" name="price" required>
                                 <option value="1000">1000</option>
                                 <option value="1200">1200</option>
@@ -35,7 +35,7 @@ const Adminpage = () => {
                             </select>
                         </div>
                         <div className="mb-3">
-                            <label for="formFile" className="form-label">Upload Frame Image</label>
+                            <label htmlFor="formFile" className="form-label">Upload Frame Image</label>
                             <input className="form-control" type="file" id="formFile" name="frame_image" accept="image/*" required />
                         </div>
                         <button type="submit" className="btn btn-outline-light w-100">Upload Frame</button>

@@ -17,7 +17,8 @@ function App() {
     <Routes>
       <Route exact path = "/" element={<Login />}/>
       <Route exact path="/home" element={<><NavBar /><HomePage /></>} />
-      <Route exact path = "/admin" element={<ProtectedRoute><Adminpage/><ProtectedRoute/></ProtectedRoute>}/>
+      {/* <Route exact path = "/admin" element={<ProtectedRoute><Adminpage/></ProtectedRoute>}/> */}
+      <Route path="/admin" element={<ProtectedRoute> <Adminpage /></ProtectedRoute> }/>
       <Route exact path = "/pay" element={<Payment/>}/>
     </Routes>
 

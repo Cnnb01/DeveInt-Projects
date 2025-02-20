@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../api";
+import axios from "axios";
 
 const Login = () => {
+    const API_BASE_URL = "http://localhost:8000";
     const [role, setRole] = useState("customer")
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -16,8 +18,8 @@ const Login = () => {
         e.preventDefault(); //prevent page refresh
         console.log("Logging in as:", role);
         try {
-            const resp = await login(role,password)
-            if(resp.success){
+            const resp = await axios.post(`${API_BASE_URL}/`, { role, adminPassword: password }, { withCredentials: true });
+            if(resp.data.success){
                 navigate(role === "admin"? "/admin" : "/home")
             }else{
                 alert("login failed")
