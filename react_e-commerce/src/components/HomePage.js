@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { fetchFrames } from "../api";
+
 const HomePage = () => {
+  const API_BASE_URL = "http://localhost:8000";
   const [frames, setFrames] = useState([]);
 
-    useEffect(() => {
-      const getFrames = async () => {
-          try {
-              const data = await fetchFrames();
-              setFrames(data);
-          } catch (error) {
-              console.error("Failed to fetch frames", error);
-          }
-      };
-      getFrames();
+  useEffect(() => {
+    const getFrames = async () => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/frames`); // Direct API call
+        // console.log("FRAMES RESPONSSEEEE=>",response)
+        if (!response.ok) {
+          throw new Error("Failed to fetch frames");
+        }
+        const data = await response.json();
+        // console.log("FRAMES DATAA=>", data)
+        setFrames(data);
+      } catch (error) {
+        console.error("Failed to fetch frames", error);
+      }
+    };
+    getFrames();
   }, []);
     return(
         <>
