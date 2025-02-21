@@ -109,21 +109,35 @@ app.get("/frames", async (req, res) => {
 });
 
 app.post("/admin", upload.single("frame_image"), async(req,res)=>{
-    console.log("REQUEST BODY:=>", req.body);
-    console.log("UPLOADED FILE:=>", req.file);
+    // console.log("REQUEST BODY:=>", req.body);
+    // console.log("UPLOADED FILE:=>", req.file);
     const size = req.body.frame_size
     const color = req.body.color
     const price = req.body.price
     const image = req.file ? req.file.buffer : null;
     try {
         const result = await db.query("INSERT INTO Frames (frame_size, color, price, image_data) VALUES ($1, $2, $3, $4)",[size,color,price,image])
-        console.log("Frame uploaded to db =>",result)
+        // console.log("Frame uploaded to db =>",result)
         res.json("frame uploaded successfully");
-        // res.redirect("/admin");
     } catch (error) {
         console.log("CAUGHT AN ERROR WHILE TRYING TO UPLOAD BE=>",error)
     }
 })
+
+app.get("/pay/:frame_id", async(req, res) => {
+    const frameId = req.params.frame_id;
+    try {
+        const result = await db.query("DELETE FROM Frames WHERE frame_id = $1 RETURNING *", [frameId]);
+        if (result.rowCount === 0) {
+            return res.status(404).json({ error: "Frame not found" });
+        }
+        res.json({ message: "Order being processed" });
+    } catch (error) {
+        console.error("CAUGHT ERROR=>", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
 
 app.listen(port, ()=>{
     console.log(`Server running on port ${port}`)

@@ -19,7 +19,8 @@ function App() {
       <Route exact path="/home" element={<><NavBar /><HomePage /></>} />
       {/* <Route exact path = "/admin" element={<ProtectedRoute><Adminpage/></ProtectedRoute>}/> */}
       <Route path="/admin" element={<ProtectedRoute> <Adminpage /></ProtectedRoute> }/>
-      <Route exact path = "/pay" element={<Payment/>}/>
+      {/* <Route path="/pay:frame_id" element={<Payment/>}/> */}
+      <Route path="/pay/:frame_id" element={<Payment />} />
     </Routes>
 
     <Footer/>

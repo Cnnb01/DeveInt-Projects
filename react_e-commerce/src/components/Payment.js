@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 const Payment = () => {
+    const { frame_id } = useParams(); //to extract dynamic ID from URL
     const [paymentMethod, setpaymentMethod] = useState("")
     const [formData, setformData] = useState({
         email:"",
@@ -26,20 +28,45 @@ const Payment = () => {
         })
         setpaymentMethod("")
     }
+
+    // const handleSubmit = async(e)=>{
+    //     e.preventDefault();
+    //     try {
+    //         const resp = await axios.get(`/pay/${frame_id}`)
+    //         const data = await resp.json()
+    //         console.log("DATA IN RESPONSES=>", data)
+    //         alert("Payment initiated successfully")
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+    useEffect(() => {
+        if (frame_id) {
+          fetch(`/pay/${frame_id}`, { method: "GET" })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => console.log("Response:", data))
+            .catch((error) => console.error("Error fetching payment:", error));
+        }
+      }, [frame_id]);
     return(
         <>
         {/* <body class="jomolhari-regular payments"> */}
         <div className="d-flex align-items-center justify-content-center vh-100 jomolhari-regular payments">
         <form className="form-container paymentsform" id="myForm">
             <h4 className="text-center mb-4">Payment Form</h4>
-
+            <p><strong>Frame ID:</strong> {frame_id}</p> {/* Display Frame ID */}
             <div className="mb-3">
-                <label for="exampleInputEmail1" className="form-label">Email address</label>
+                <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                 <input onChange={handleFormChange} type="email" className="form-control" name="email" value={formData.email} id="myInputt" required />
             </div>
 
             <div className="mb-3">
-                <label for="paymentMethod" className="form-label">Payment options</label>
+                <label htmlFor="paymentMethod" className="form-label">Payment options</label>
                 <select className="form-select" id="paymentMethod" onChange={handlePaymentMethod} value={paymentMethod}>
                     <option selected disabled>Select Payment Method</option>
                     <option value="mpesa">Mpesa</option>
@@ -50,19 +77,19 @@ const Payment = () => {
             {/* rendering for input payment methods*/}
             {paymentMethod === "mpesa" && (
                 <div className="mb-3" id="mpesaInput">
-                <label for="mpesaNumber" className="form-label">Mpesa Number</label>
+                <label htmlFor="mpesaNumber" className="form-label">Mpesa Number</label>
                 <input onChange={handleFormChange} name="mpesaNum" value={formData.mpesaNum} type="text" className="form-control" id="myInputt1" placeholder="Enter your Mpesa number" />
             </div>
             )}
             {(paymentMethod === "visa" || paymentMethod === "mastercard")&&(
-                <div className="mb-3" id="cardInput" style="display: none;">
-                    <label for="cardNumber" className="form-label">Card Number</label>
+                <div className="mb-3" id="cardInput" >
+                    <label htmlFor="cardNumber" className="form-label">Card Number</label>
                     <input onChange={handleFormChange} name="cardNum" value={formData.cardNum} type="text" className="form-control" id="myInputt2" placeholder="Enter your Card number"/>
                 </div>
             )}
 
             <div className="mb-3">
-                <label for="exampleFormControlTextarea1" className="form-label">Delivery details and location</label>
+                <label htmlFor="exampleFormControlTextarea1" className="form-label">Delivery details and location</label>
                 <textarea onChange={handleFormChange} name="deliveryDets" value={formData.deliveryDets} className="form-control" id="myInputt3" rows="3"></textarea>
             </div>
 
