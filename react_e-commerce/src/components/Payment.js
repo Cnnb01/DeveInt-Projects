@@ -28,8 +28,8 @@ const Payment = () => {
     }
     return(
         <>
-        <body class="jomolhari-regular payments">
-        <div className="d-flex align-items-center justify-content-center vh-100">
+        {/* <body class="jomolhari-regular payments"> */}
+        <div className="d-flex align-items-center justify-content-center vh-100 jomolhari-regular payments">
         <form className="form-container paymentsform" id="myForm">
             <h4 className="text-center mb-4">Payment Form</h4>
 
@@ -95,7 +95,7 @@ const Payment = () => {
             </div>
         </form>
     </div>
-    </body>
+    {/* </body> */}
    </>
     )
 }

@@ -22,26 +22,28 @@ const Adminpage = () => {
         formData.append("frame_size", frameSize);
         formData.append("color", frameColor);
         formData.append("price", framePrice);
+        console.log("THE FORM DATA CONTENT IS=>",formData)
         try {
             const resp = await axios.post(`${API_BASE_URL}/admin`, formData, {headers: { "Content-Type": "multipart/form-data","Accept": "application/json" }});
-            if(resp.data.success){
+            console.log("THEE REESSPONSEEE==>>",resp)
+            if(resp.data === "frame uploaded successfully"){
                 alert("Frame successfully uploaded")
             }else{
                 alert("An error occured while uploading")
             }
         } catch (error) {
-            console.error(error)
+            console.error("CAUGHT AN ERROR WHILE TRYING TO UPLOAD FE=>",error)
         }
     }
 
     return(
         <>
-        <body className="adminpage jomolhari-regular">
-        <div className="container mt-5">
+        {/* <body className="adminpage jomolhari-regular"> */}
+        <div className="container mt-5 adminpage jomolhari-regular">
         <div className="row justify-content-center">
             <div className="col-lg-6 col-md-8 col-sm-10">
                 <div className="custom-form-container">
-                    <form onSubmit={uploadFrame} encType="multipart/form-data">
+                    <form onSubmit={uploadFrame} encType="multipart/form-data" method="post" action="/admin">
                         <div className="mb-3">
                             <label htmlFor="frameSize" className="form-label">Frame Size</label>
                             <select value={frameSize} onChange={(e)=>setframeSize(e.target.value)} className="form-control" id="frameSize" name="frame_size" required>
@@ -79,7 +81,7 @@ const Adminpage = () => {
             </div>
         </div>
     </div>
-    </body>
+    {/* </body> */}
         </>
     )
 }

@@ -109,8 +109,8 @@ app.get("/frames", async (req, res) => {
 });
 
 app.post("/admin", upload.single("frame_image"), async(req,res)=>{
-    console.log("Request Body:", req.body);
-    console.log("Uploaded File:", req.file);
+    console.log("REQUEST BODY:=>", req.body);
+    console.log("UPLOADED FILE:=>", req.file);
     const size = req.body.frame_size
     const color = req.body.color
     const price = req.body.price
@@ -121,7 +121,7 @@ app.post("/admin", upload.single("frame_image"), async(req,res)=>{
         res.json("frame uploaded successfully");
         // res.redirect("/admin");
     } catch (error) {
-        console.log(error)
+        console.log("CAUGHT AN ERROR WHILE TRYING TO UPLOAD BE=>",error)
     }
 })
 

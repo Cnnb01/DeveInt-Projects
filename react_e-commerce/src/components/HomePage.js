@@ -99,11 +99,11 @@ const HomePage = () => {
         </p><br/>
         <form className="row g-3">
           <div className="mb-3">
-            <label for="exampleFormControlInput1" className="form-label">Email address</label>
+            <label htmlFor="exampleFormControlInput1" className="form-label">Email address</label>
             <input type="email" className="form-control" id="exampleFormControlInput1" placeholder="email@gmail.com"/>
           </div>
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" className="form-label">Frame details</label>
+          <div className="mb-3">
+            <label htmlFor="exampleFormControlTextarea1" className="form-label">Frame details</label>
             <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="size and color"></textarea>
           </div>
             <div className="col-auto">
