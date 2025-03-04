@@ -127,7 +127,7 @@ app.post("/admin", upload.single("frame_image"), async(req,res)=>{
 app.get("/pay/:frame_id", async(req, res) => {
     const frameId = req.params.frame_id;
     try {
-        const result = await db.query("DELETE FROM Frames WHERE frame_id = $1 RETURNING *", [frameId]);
+        const result = await db.query("DELETE FROM Frames WHERE frame_id = $1", [frameId]);
         if (result.rowCount === 0) {
             return res.status(404).json({ error: "Frame not found" });
         }

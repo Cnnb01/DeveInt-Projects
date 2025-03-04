@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URLL || "http://localhost:8000";
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URLL
     console.log("Environment Variables:", process.env);
     console.log("API URL:", process.env.REACT_APP_API_BASE_URLL)
     const [role, setRole] = useState("customer")

@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import axios from "axios";
 
 const ProtectedRoute = ({ children }) => {
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URLL || "http://localhost:8000";
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URLL
     const [isAuthenticated, setIsAuthenticated] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -23,7 +23,7 @@ const ProtectedRoute = ({ children }) => {
             }
         };
         checkAuth();
-    }, []);
+    });
 
     if (loading) return <h1>Loading...</h1>;
 

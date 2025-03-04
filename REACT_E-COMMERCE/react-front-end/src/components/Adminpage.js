@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const Adminpage = () => {
     // const API_BASE_URL = "http://localhost:8000";
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URLL || "http://localhost:8000";
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URLL
 
     const [selectedFile, setselectedFile] = useState(null)
     const [frameSize, setframeSize] = useState("A-5")
@@ -43,6 +43,7 @@ const Adminpage = () => {
         {/* <body className="adminpage jomolhari-regular"> */}
         <div className="container mt-5 adminpage jomolhari-regular">
         <div className="row justify-content-center">
+        <p><a className="btn btn-outline-secondary" href={`/home`}>Back</a></p>
             <div className="col-lg-6 col-md-8 col-sm-10">
                 <div className="custom-form-container">
                     <form onSubmit={uploadFrame} encType="multipart/form-data" method="post" action="/admin">

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-
 const HomePage = () => {
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URLL || "http://localhost:8000";
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URLL
   console.log("API_IBASE_URL=>",API_BASE_URL)
   const [frames, setFrames] = useState([]);
 
@@ -21,7 +20,7 @@ const HomePage = () => {
       }
     };
     getFrames();
-  }, []);
+  });
     return(
         <>
         <div id="carouselExampleDark"  className="centerround carousel carousel-dark slide">
@@ -32,21 +31,21 @@ const HomePage = () => {
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active" data-bs-interval="10000">
-            <img id="pic1" src="pic11.jpg" className="d-block " alt="frame picture" />
+            <img id="pic1" src="pic11.jpg" className="d-block " alt="frame" />
             <div className="carousel-caption d-none d-md-block">
               <h1 style={{color: "white"}} className="jomolhari-regular">Decorate your walls, elevate your space. </h1>
               <p style={{color: "white"}} className="jomolhari-regular roboto-condensed-normalText2">Frame your moments, frame your style.</p>
             </div>
           </div>
           <div className="carousel-item" data-bs-interval="2000">
-            <img id="pic1" src="pic55.jpg" className="d-block" alt="frame picture" />
+            <img id="pic1" src="pic55.jpg" className="d-block" alt="frame" />
             <div className="carousel-caption d-none d-md-block">
               <h1 style={{color: "white"}} className="jomolhari-regular" >Frame your memories beautifully.</h1>
               <p style={{color: "white"}} className="jomolhari-regular roboto-condensed-normalText2">Transform your space with our designs.</p>
             </div>
           </div>
           <div className="carousel-item">
-            <img id="pic1" src="pic66.jpg" className="d-block" alt="frame picture" />
+            <img id="pic1" src="pic66.jpg" className="d-block" alt="frame" />
             <div className="carousel-caption d-none d-md-block">
               <h1 style={{color: "white"}} className="jomolhari-regular" >Your walls deserve some love!</h1>
               <p style={{color: "white"}} className="jomolhari-regular roboto-condensed-normalText2">Frames for every size and style.</p>
@@ -75,7 +74,7 @@ const HomePage = () => {
             <div className="productsbox ">
               { frames.map((frame)=>(
                 <div key={frame.frame_id} className="card col jomolhari-regular" style={{width: "18rem"}}>
-                <img src={`data:image/jpeg;base64,${frame.image_data}`} className="productframes" alt="frame picture" />
+                <img src={`data:image/jpeg;base64,${frame.image_data}`} className="productframes" alt="frame" />
                     <div className="card-body">
                       <p className="card-text">
                         Details<br />

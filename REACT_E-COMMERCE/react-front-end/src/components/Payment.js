@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 // import { Link } from "react-router-dom";
-const Payment = () => {
+const Payment = ({ setFrames }) => {
     const { frame_id } = useParams(); //to extract dynamic ID from URL
     const [paymentMethod, setpaymentMethod] = useState("")
     const [formData, setformData] = useState({
@@ -29,34 +29,27 @@ const Payment = () => {
         })
         setpaymentMethod("")
     }
+    // const [frames, setFrames] = useState([])
 
-    // const handleSubmit = async(e)=>{
-    //     e.preventDefault();
-    //     try {
-    //         const resp = await axios.get(`/pay/${frame_id}`)
-    //         const data = await resp.json()
-    //         console.log("DATA IN RESPONSES=>", data)
-    //         alert("Payment initiated successfully")
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    // }
     useEffect(() => {
         if (frame_id) {
-          fetch(`/pay/${frame_id}`, { method: "GET " })
+          fetch(`/pay/${frame_id}`, { method: "GET" })
             .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              return fetch("/frames");
             })
-            .then((data) => console.log("Response:", data))
+            .then(response => response.json())
+            .then(data => setFrames(data))
             .catch((error) => console.error("Error fetching payment:", error));
         }
-      }, [frame_id]);
+      });
     return(
         <>
         {/* <body className="jomolhari-regular payments"> */}
+        <p><a className="btn btn-outline-secondary" href={`/home`}>Back</a></p>
+
         <div className="d-flex align-items-center justify-content-center vh-100 jomolhari-regular payments">
         <form className="form-container paymentsform" id="myForm">
             <h4 className="text-center mb-4">Payment Form</h4>
