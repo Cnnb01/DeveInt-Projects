@@ -23,7 +23,7 @@ const ProtectedRoute = ({ children }) => {
             }
         };
         checkAuth();
-    });
+    },[]);
 
     if (loading) return <h1>Loading...</h1>;
 

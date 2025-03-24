@@ -20,7 +20,7 @@ const HomePage = () => {
       }
     };
     getFrames();
-  });
+  },[]);
     return(
         <>
         <div id="carouselExampleDark"  className="centerround carousel carousel-dark slide">

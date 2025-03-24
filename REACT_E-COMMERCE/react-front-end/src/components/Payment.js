@@ -44,7 +44,7 @@ const Payment = ({ setFrames }) => {
             .then(data => setFrames(data))
             .catch((error) => console.error("Error fetching payment:", error));
         }
-      });
+      },[frame_id]);
     return(
         <>
         {/* <body className="jomolhari-regular payments"> */}
