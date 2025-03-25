@@ -73,17 +73,19 @@ app.post("/login", async(req,res)=>{
                     if (result){
                         // generate jwt
                         //step1:create a token
-                        const isAdmin = email === "admin@gmail.com"
-                        const token = jwt.sign({email:email, isAdmin: isAdmin}, SECRET_KEY,{expiresIn: "1h"})
-                        console.log("Generated Token =>", token);
+                        // console.log("the email is =>", email)
+                        const token = jwt.sign({email:email},SECRET_KEY,{ expiresIn: "1h" })
+                        // console.log("SECRET_KEY in Login:", SECRET_KEY);
+                        // console.log("Generated Token =>", token);
                         const decoded = jwt.decode(token);
                         console.log("Decoded JWT =>", decoded);
                         //step2:convert the token into a cookie
-                        res.cookie("token", token, {
+                        const cookiecreated = res.cookie("token", token, {
                             httpOnly: true,
-                            secure: process.env.NODE_ENV === "production",
+                            secure: false,
                             maxAge: 3600000
                         })
+                        // console.log("COOKIE CREATED=>", cookiecreated)
                         res.json({ success: true, message: "Login successful", token });
                     } else {
                         res.status(401).json({ success: false, message: "Invalid credentials" });
@@ -100,29 +102,23 @@ app.post("/login", async(req,res)=>{
 
 
 //step3:create middleware to carryout verification
-const verifyAdmin = (req, res, next) => {
-    console.log("Cookies received:", req.cookies)
+const verifyAdmin = (req,res,next)=>{
     const token = req.cookies.token;
-    console.log("the tokennn", token)
-    if (!token) {
-        return res.json({ message: "Access denied. No token provided." });
-    }
-
+    const newdecoded = jwt.decode(token);
     jwt.verify(token, SECRET_KEY, (err, decoded) => {
         if (err) {
-            return res.status(403).json({ message: "Invalid token" });
+            // console.log("JWT Verification Error:", err.message);
+            return res.status(403).json({ message: "Invalid token"});
         }
-        if (!decoded.isAdmin) {
-            return res.status(403).json({ message: "Access denied. Admins only." });
-        }
-        req.isAdmin = decoded.isAdmin;
+        // console.log("Decoded JWT:", decoded);
+        req.user = decoded
         next();
     });
 };
 
 
 app.get("/admin", verifyAdmin, (req, res) => {
-    if(req.isAdmin === "admin@gmail.com"){
+    if(req.user.email === "admin@gmail.com"){
         res.json({ message: "Welcome Admin! You have access to this page." });
     }else {
         res.status(403).json({ message: "Access denied" });
