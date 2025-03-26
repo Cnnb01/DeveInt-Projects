@@ -47,9 +47,9 @@ app.post("/", async(req,res)=>{
             if (adminpassword === storedpswd){
                 // generate JWT
                 const token = jwt.sign({role:role},SECRET_KEY,{ expiresIn: "1h" })
-                // console.log("Generated Token =>", token);
-                // const decoded = jwt.decode(token);
-                // console.log("Decoded JWT =>", decoded);
+                console.log("Generated Token =>", token);
+                const decoded = jwt.decode(token);
+                console.log("Decoded JWT =>", decoded);
                 // set token as HTTP-only cookie means JavaScript cannot access it on the frontend (prevents XSS attacks).
                 res.cookie("token", token, {
                     httpOnly: true, //prevent JavaScript access
@@ -76,11 +76,14 @@ app.post("/", async(req,res)=>{
 
 // middleware for routes protection
 const verifyUser = (req,res,next)=>{
+    console.log("the RES COOKIES AREE=>>>",req.cookies)
     const token = req.cookies.token //get token from cookies
+    console.log("the TOKEN FROM THE RES COOKIES ISSSSS=>>>",token)
     jwt.verify(token, SECRET_KEY, (err, decoded)=>{ //decoded contains the user payload 
         if(err){
             return res.status(403).json({message:"Invalid token"})
         }
+        console.log("Decoded JWT:", decoded);
         req.user = decoded
         next()
     })
