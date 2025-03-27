@@ -21,8 +21,8 @@ const db = new pg.Client({
 });
 db.connect();
 
-// const storage = multer.memoryStorage() //configures multer to temporarily store uploaded files in memory (RAM) instead of saving them to disk
-// const upload = multer({storage: storage})
+const storage = multer.memoryStorage() //configures multer to temporarily store uploaded files in memory (RAM) instead of saving them to disk
+const upload = multer({storage: storage})
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cors({ origin: "http://localhost:5173", credentials: true })); //CORS allows the frontend to make API requests to the backend.
@@ -33,9 +33,7 @@ app.use(cookieParser());
 const SECRET_KEY = process.env.JWT_SECRET
 
 app.post('/signup', async(req,res)=>{
-    const name = req.body.name
-    const email = req.body.email
-    const password = req.body.password
+    const {name,email,password} = req.body
     try {
         const confirmUser = await db.query("SELECT * FROM AUser WHERE email=$1", [email])
         if(confirmUser.rows.length > 0){
@@ -58,8 +56,7 @@ app.post('/signup', async(req,res)=>{
 })
 
 app.post("/login", async(req,res)=>{
-    const email = req.body.email
-    const loginpassword = req.body.loginpassword
+    const {email,loginpassword} = req.body
     try {
         const confirmUser = await db.query("SELECT * FROM AUser WHERE email=$1", [email])
         if(confirmUser.rows.length > 0){
@@ -100,7 +97,6 @@ app.post("/login", async(req,res)=>{
     }
 })
 
-
 //step3:create middleware to carryout verification
 const verifyAdmin = (req,res,next)=>{
     const token = req.cookies.token;
@@ -116,7 +112,6 @@ const verifyAdmin = (req,res,next)=>{
     });
 };
 
-
 app.get("/admin", verifyAdmin, (req, res) => {
     if(req.user.email === "admin@gmail.com"){
         res.json({ message: "Welcome Admin! You have access to this page." });
@@ -124,6 +119,17 @@ app.get("/admin", verifyAdmin, (req, res) => {
         res.status(403).json({ message: "Access denied" });
     }
 });
+
+app.post("/admin", upload.single("image"), async (req,res)=>{
+    const imageBuffer = req.file.buffer;
+    const {hostname, amenities, pricing, startdate, enddate, place} = req.body;
+    try {
+        const newHome = db.query("INSERT INTO Home (home_picture, host_name, amenities, cost, home_location, from_date, to_date) VALUES ($1, $2, $3, $4, $5, $6, $7)", [imageBuffer, hostname, amenities, pricing, place, startdate, enddate])
+        res.json({ message: "User registered successfully" });
+    } catch (error) {
+        console.log("ERROR=>",error)
+    }
+})
 
 app.listen(port, ()=>{
     console.log(`Server running on port ${port}`)

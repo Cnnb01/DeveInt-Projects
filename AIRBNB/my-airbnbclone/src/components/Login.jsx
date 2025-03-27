@@ -28,7 +28,7 @@ const Login = ()=>{
                 credentials: "include"
             })
                 const data = await response.json()
-                console.log("response fro server=>", data)
+                console.log("response from server=>", data)
                 //navigate to homepage
                 if(response.ok){
                     alert ("login successfull")

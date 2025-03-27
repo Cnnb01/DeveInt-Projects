@@ -71,6 +71,11 @@ button:focus-visible {
   font-weight: 500;
 } */
 @import "tailwindcss";
+@import 'flowbite';
+@import "flowbite/src/themes/default";
+/* @plugin "flowbite/plugin";
+@source "../node_modules/flowbite"; */
+
 
 div{
   border: 1px solid black;
@@ -149,3 +154,4 @@ p{
   font-size: 13px;
   font-weight: 400;
 }
+
