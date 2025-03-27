@@ -131,6 +131,22 @@ app.post("/admin", upload.single("image"), async (req,res)=>{
     }
 })
 
+//fetching the homes
+app.get("/homes", async(req,res)=>{
+    try{
+        const result = await db.query("SELECT * FROM Home")
+        //converting image (binary) to base64
+        const homes = result.rows.map(home=>({
+            ...home,
+            home_picture: home.home_picture ? home.home_picture.toString("base64") : null
+        }))
+        res.json(homes)
+    }
+    catch(error){
+        console.error("Error:", error);
+        res.status(500).json({ message: "Server error" });
+    }
+})
 app.listen(port, ()=>{
     console.log(`Server running on port ${port}`)
 });

@@ -44,7 +44,7 @@ const Admin = ()=>{
         formData.append("place", form.place);
         console.log("Current data in the form is=>",form)
         try {
-            const response = await fetch("http://localhost:8000/admin",{
+            const response = await fetch("admin",{
                 method: "POST",
                 body: formData,
                 credentials: "include"
