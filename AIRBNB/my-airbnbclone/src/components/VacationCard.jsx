@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-export function VacationCard({ home_id, image, hostname, amenities, pricing, imgAlt, location, startdate, enddate, eyebrow, title, url, distance }) {
+export function VacationCard({ home_id, image, hostname, amenities, pricing, imgAlt, location, startdate, enddate, eyebrow, title, url, distance, desc }) {
     return (
       <Link to={`/homes/${home_id}`}>
       <div className="vacationcard">
@@ -14,6 +14,7 @@ export function VacationCard({ home_id, image, hostname, amenities, pricing, img
           <div className="mt-2 text-sm text-gray-600">Cost {pricing}</div>
           <div className="mt-2 text-sm text-gray-600">Available from {startdate}</div>
           <div className="mt-2 text-sm text-gray-600">to {enddate}</div>
+          <div>{desc}</div>
         </div>
       </div>
       </Link>

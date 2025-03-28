@@ -9,7 +9,8 @@ const Admin = ()=>{
         pricing: "",
         startdate: "",
         enddate: "",
-        place: ""
+        place: "",
+        desc: "",
     })
     const navigate = useNavigate()
     const handleImageUpload = (event) =>{
@@ -42,9 +43,10 @@ const Admin = ()=>{
         formData.append("startdate", form.startdate);
         formData.append("enddate", form.enddate);
         formData.append("place", form.place);
+        formData.append("desc", form.desc)
         console.log("Current data in the form is=>",form)
         try {
-            const response = await fetch("admin",{
+            const response = await fetch("http://localhost:8000/admin",{
                 method: "POST",
                 body: formData,
                 credentials: "include"
@@ -96,6 +98,11 @@ const Admin = ()=>{
             <div>
                 <label class="mb-2 text-sm text-slate-900 font-medium block">County and country</label>
                 <input type="name" placeholder="Nakuru, Kenya" name="place" value={form.place} onChange={handleChange} class="px-4 py-3 bg-gray-100 focus:bg-transparent w-full text-sm text-slate-900 outline-[#333] rounded-sm transition-all" />
+            </div>
+
+            <div>
+            <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Your message</label>
+            <textarea id="message" name="desc" value={form.desc} onChange={handleChange} rows="4" class="block p-2.5 w-full text-sm   rounded-lg border border-gray-300 dark:bg-gray-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black" placeholder="More on the bnb..."></textarea>
             </div>
 
             <div id="date-range-picker" date-rangepicker class="flex items-center">

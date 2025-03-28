@@ -122,10 +122,10 @@ app.get("/admin", verifyAdmin, (req, res) => {
 
 app.post("/admin", upload.single("image"), async (req,res)=>{
     const imageBuffer = req.file.buffer;
-    const {hostname, amenities, pricing, startdate, enddate, place} = req.body;
+    const {hostname, amenities, pricing, startdate, enddate, place, desc} = req.body;
     try {
-        const newHome = db.query("INSERT INTO Home (home_picture, host_name, amenities, cost, home_location, from_date, to_date) VALUES ($1, $2, $3, $4, $5, $6, $7)", [imageBuffer, hostname, amenities, pricing, place, startdate, enddate])
-        res.json({ message: "User registered successfully" });
+        const newHome = db.query("INSERT INTO Home (home_picture, host_name, amenities, cost, home_location, from_date, to_date, home_desc) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)", [imageBuffer, hostname, amenities, pricing, place, startdate, enddate, desc])
+        res.json({ message: "Content added successfully" });
     } catch (error) {
         console.log("ERROR=>",error)
     }

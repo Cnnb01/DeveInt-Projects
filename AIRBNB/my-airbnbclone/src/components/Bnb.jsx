@@ -27,7 +27,7 @@ const Bnb = ()=>{
     return(
         <>
         <p>Bnb Page</p>
-            <VacationCard home_id={home.home_id} image={`data:image/jpeg;base64,${home.home_picture}`} hostname={home.host_name} amenities={home.amenities} pricing={home.cost} location={home.home_location} startdate={home.from_date} enddate={home.to_date}/>
+            <VacationCard key={home.home_id} image={`data:image/jpeg;base64,${home.home_picture}`} hostname={home.host_name} amenities={home.amenities} pricing={home.cost} location={home.home_location} startdate={home.from_date} enddate={home.to_date} desc={home.home_desc}/>
         </>
     )
 }
