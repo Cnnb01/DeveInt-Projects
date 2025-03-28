@@ -1,10 +1,14 @@
 import { VacationCard } from "./VacationCard";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 const Bnb = ()=>{
     const {home_id} = useParams()
     const [home, setHome] = useState(null);
+    const navigate = useNavigate();
+    const handleCheckout = () => {
+        navigate(`/checkout/${home_id}`);
+    };
     useEffect(()=>{
         const getHome = async()=>{
             try {
@@ -28,6 +32,7 @@ const Bnb = ()=>{
         <>
         <p>Bnb Page</p>
             <VacationCard key={home.home_id} image={`data:image/jpeg;base64,${home.home_picture}`} hostname={home.host_name} amenities={home.amenities} pricing={home.cost} location={home.home_location} startdate={home.from_date} enddate={home.to_date} desc={home.home_desc}/>
+            <button type="submit" onClick={handleCheckout} class="text-white bg-[#ff385c] hover:bg-[#e63950] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Book this bnb</button>
         </>
     )
 }

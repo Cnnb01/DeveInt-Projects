@@ -9,6 +9,7 @@ import Login from './components/Login'
 import Signup from './components/Signup';
 import Admin from './components/Admin';
 import ProtectedRoute from './components/ProtectedRoute';
+import Checkout from './components/Checkout';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/homes/:home_id" element={<Bnb />} />
         {/* <Route path='/admin' element={<ProtectedRoute> <Admin/> </ProtectedRoute>} /> */}
-        <Route path='/admin' element={<Admin/>} /> 
+        <Route path='/admin' element={<Admin/>} />
+        <Route path='/checkout/:home_id' element={<Checkout/>}/>
       </Routes>
     </Router>
     </>

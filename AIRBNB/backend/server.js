@@ -168,6 +168,21 @@ app.get("/homes/:home_id", async(req,res)=>{
     }
 })
 
+//checkout
+app.post("/checkout/:home_id", async(req, res)=>{
+    const homeId = req.params.home_id
+    try {
+        const result = await db.query("DELETE FROM Home WHERE home_id = $1",[homeId])
+        if (result.rowCount === 0) {
+            return res.status(404).json({ error: "Frame not found" });
+        }
+        res.json({ message: "Order still being processed" });
+    } catch (error) {
+        console.error("CAUGHT ERROR=>", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+})
+
 app.listen(port, ()=>{
     console.log(`Server running on port ${port}`)
 });
