@@ -155,7 +155,7 @@ app.get("/homes/:home_id", async(req,res)=>{
             return res.status(404).json({ error: "Home not found" });
         }
         let home = result.rows[0]
-        // Convert image from binary to Base64
+        //converting image from binary to Base64
         if (home.home_picture) {
             home.home_picture = home.home_picture.toString("base64");
         }
