@@ -147,6 +147,25 @@ app.get("/homes", async(req,res)=>{
         res.status(500).json({ message: "Server error" });
     }
 })
+app.get("/homes/:home_id", async(req,res)=>{
+    const homeId = req.params.home_id
+    try {
+        const result = await db.query("SELECT * FROM Home WHERE home_id=$1",[homeId])
+        if (result.rowCount === 0) {
+            return res.status(404).json({ error: "Home not found" });
+        }
+        let home = result.rows[0]
+        // Convert image from binary to Base64
+        if (home.home_picture) {
+            home.home_picture = home.home_picture.toString("base64");
+        }
+        res.json(home);
+    } catch (error) {
+        console.error("CAUGHT ERROR=>", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+})
+
 app.listen(port, ()=>{
     console.log(`Server running on port ${port}`)
 });

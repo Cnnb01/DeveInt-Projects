@@ -25,7 +25,7 @@ getHomes()
         <NavBar/>
         <div className="homePage">
         {homes.map((home)=>(
-            <VacationCard key={home.home_id} image={`data:image/jpeg;base64,${home.home_picture}`} hostname={home.host_name} amenities={home.amenities} pricing={home.cost} location={home.home_location} startdate={home.from_date} enddate={home.to_date}/>
+            <VacationCard key={home.home_id} home_id={home.home_id} image={`data:image/jpeg;base64,${home.home_picture}`} hostname={home.host_name} amenities={home.amenities} pricing={home.cost} location={home.home_location} startdate={home.from_date} enddate={home.to_date}/>
         ))}
         {/* <VacationCard img={img} imgAlt={"Luxury resort"} eyebrow={"the eyebrow"} distance={"65 kilometers away"} title={"Private Villa"} pricing={"$300 USD per night"}/> */}
         </div>
