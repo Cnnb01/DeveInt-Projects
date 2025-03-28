@@ -131,7 +131,7 @@ app.post("/admin", upload.single("image"), async (req,res)=>{
     }
 })
 
-//fetching the homes
+//fetching homes
 app.get("/homes", async(req,res)=>{
     try{
         const result = await db.query("SELECT * FROM Home")
@@ -147,6 +147,8 @@ app.get("/homes", async(req,res)=>{
         res.status(500).json({ message: "Server error" });
     }
 })
+
+//fetching a home
 app.get("/homes/:home_id", async(req,res)=>{
     const homeId = req.params.home_id
     try {

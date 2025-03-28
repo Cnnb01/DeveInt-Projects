@@ -1,4 +1,3 @@
-// import img from '../assets/Icons/img1.jpg'
 import { Link } from "react-router-dom"
 export function VacationCard({ home_id, image, hostname, amenities, pricing, imgAlt, location, startdate, enddate, eyebrow, title, url, distance }) {
     return (

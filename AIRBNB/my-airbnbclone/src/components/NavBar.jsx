@@ -62,7 +62,6 @@ const NavBar = ()=>{
                     </ul>
                 </div>
                 )}
-                
             </div>
         </div>
         <div className='icoons'>
