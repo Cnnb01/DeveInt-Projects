@@ -78,74 +78,163 @@ button:focus-visible {
 
 
 div{
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 /* Navbarpage */
-.navbarr{
-  border: 1px solid black;
+/* Navbar styles */
+.navbar {
   display: flex;
-  gap: 20%;
-  height: 200px;
-}
-.loogo{
-  height: 82px;
-}
-.searchbar{
-  width: 650px;
-  height: 150px;
-}
-.insidesearch{
-  border: 1px solid black;
-  border-radius: 10px;
-  margin-top: 110px;
-}
-.signup{
-  display: flex;
-  /* flex-direction: row; */
-  gap: 7px;
-  /* margin-left: 0px; */
-  height: 35px;
-  width: 325px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background: white;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
 }
 
-
-.icoons{
-  border: 1px solid black;
-  display: flex;
+/* Logo */
+.logo img {
+  height: 50px;
 }
-.ogo{
-  margin-right: 10px;
+
+/* Search Bar */
+.searchbar {
+  flex-grow: 1;
+  max-width: 400px;
+  text-align: center;
+}
+
+.search-form {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.search-form input {
+  flex-grow: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+.search-form button {
+  background-color: #ff385c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+/* Navigation Options */
+.nav-options {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.host-btn {
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.account-btn {
+  background-color: #ff385c;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown */
+.dropdown {
+  position: absolute;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  right: 50px;
+  top: 60px;
+}
+
+.dropdown ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dropdown ul li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown ul li:hover {
+  background: #f5f5f5;
 }
 
 /* Homepage */
 .homePage{
-  border: 1px solid black;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  height: auto;
   /* gap: 12px; */
 }
-.thepics{
+.thepics {
   height: 200px;
-  width: 250px;
-  margin-left: 40px;
+  width: 100%;
+  object-fit: cover; /* Ensures the image covers the entire area without distortion */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 .vacationcard{
-  border: 1px solid black;
-  margin-top: 15px;
-  margin-left: 25px;
-  height: 380px;
+  border:1px solid #ddd;
+  margin: 10px;
+  height: 400px;
   width: 320px;
+  border-radius: 10px;
 }
 /* footer */
-.footer{
+.footer {
   display: flex;
-  gap: 300px;
+  justify-content: space-between;
+  padding: 30px;
+  background-color: #f7f7f7;
+  border-top: 1px solid #ddd;
+  font-size: 14px;
 }
-.footersect{
-  padding: 15px;
-  margin-left: 102px;
+
+.footer-section {
+  flex: 1;
+  padding: 0 20px;
 }
+
+.footer-section h4 {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer-section p {
+  margin: 5px 0;
+  color: #555;
+  cursor: pointer;
+}
+
+.footer-section p:hover {
+  text-decoration: underline;
+}
+
+
 h4{
   font-size: 15px;
   font-weight: 700;
@@ -153,5 +242,137 @@ h4{
 p{
   font-size: 13px;
   font-weight: 400;
+}
+
+/* bnb page */
+.bnb-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.bnb-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Adds spacing between elements */
+}
+
+.bnb-details {
+  width: 100%;
+  max-width: 600px;
+  text-align: left;
+  background: #f8f8f8;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.bnb-desc {
+  font-size: 1rem;
+  color: #444;
+}
+
+.bnb-booking-btn {
+  width: 100%;
+  max-width: 250px;
+  text-align: center;
+  background-color: #ff385c;
+  color: white;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+.bnb-booking-btn:hover {
+  background-color: #e63950;
+}
+
+@media (min-width: 768px) {
+  .bnb-content {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .bnb-details {
+    margin-left: 20px;
+  }
+}
+
+/* checkout */
+.checkout-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.price-details {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background: #f8f8f8;
+}
+.bnb-checkout-btn{
+  width: 50%;
+  max-width: 200px;
+  text-align: center;
+  background-color: #ff385c;
+  color: white;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-left: 130px;
+  transition: background 0.3s ease-in-out;
 }
 

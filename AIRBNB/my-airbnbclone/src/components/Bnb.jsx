@@ -28,12 +28,18 @@ const Bnb = ()=>{
         return <p>Loading...</p>;
     }
 
-    return(
+    return (
         <>
-        <p>Bnb Page</p>
-            <VacationCard key={home.home_id} image={`data:image/jpeg;base64,${home.home_picture}`} hostname={home.host_name} amenities={home.amenities} pricing={home.cost} location={home.home_location} startdate={home.from_date} enddate={home.to_date} desc={home.home_desc}/>
-            <button type="submit" onClick={handleCheckout} class="text-white bg-[#ff385c] hover:bg-[#e63950] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Book this bnb</button>
+            <div className="bnb-container">
+                <div className="bnb-content">
+                    <VacationCard key={home.home_id} image={`data:image/jpeg;base64,${home.home_picture}`} hostname={home.host_name} amenities={home.amenities} pricing={home.cost} location={home.home_location} startdate={home.from_date} enddate={home.to_date} />
+                    <div className="bnb-details">
+                        <p className="bnb-desc">{home.home_desc}</p>
+                        <button type="submit" onClick={handleCheckout} className="bnb-booking-btn">Book this BnB</button>
+                    </div>
+                </div>
+            </div>
         </>
-    )
+    );
 }
 export default Bnb;
