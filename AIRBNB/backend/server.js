@@ -55,7 +55,7 @@ app.post('/signup', async(req,res)=>{
     }
 })
 
-app.post("/login", async(req,res)=>{
+app.post("/", async(req,res)=>{
     const {email,loginpassword} = req.body
     try {
         const confirmUser = await db.query("SELECT * FROM AUser WHERE email=$1", [email])
@@ -174,13 +174,22 @@ app.post("/checkout/:home_id", async(req, res)=>{
     try {
         const result = await db.query("DELETE FROM Home WHERE home_id = $1",[homeId])
         if (result.rowCount === 0) {
-            return res.status(404).json({ error: "Frame not found" });
+            return res.status(404).json({ error: "Home not found" });
         }
-        res.json({ message: "Order still being processed" });
+        res.json({ message: "Home successfully deleted" });
     } catch (error) {
         console.error("CAUGHT ERROR=>", error);
         res.status(500).json({ error: "Internal Server Error" });
     }
+})
+
+// logout
+app.get("/logout", (req,res)=>{
+    res.clearCookie("token",{
+        httpOnly:true,
+        secure: false
+    });
+    res.json({message: "Logged out successfully"})
 })
 
 app.listen(port, ()=>{
