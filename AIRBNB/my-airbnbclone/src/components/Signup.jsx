@@ -57,7 +57,7 @@ const Signup = ()=>{
             //navigate to homepage
             if(response.ok){
                 alert ("user created successfully")
-                navigate("/")
+                navigate("/home")
             }else{
                 alert(data.message)
             }

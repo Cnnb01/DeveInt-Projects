@@ -33,6 +33,6 @@ const ProtectedRoute = ({ children }) => {
     if (loading){
         return <h1>Loading...</h1>
     }
-    return authenticated? children: <Navigate to="/" />
+    return authenticated? children: <Navigate to="/home" />
 }
 export default ProtectedRoute;

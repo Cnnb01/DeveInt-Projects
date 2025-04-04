@@ -19,7 +19,7 @@ const Login = ()=>{
         event.preventDefault(); //prevents page refresh
         console.log("The data in the form is=>",formData)
         try {
-            const response = await fetch("http://localhost:8000/login",{
+            const response = await fetch("http://localhost:8000/",{
                 method: "POST",
                 headers:{
                     "Content-Type":"application/json"
@@ -32,13 +32,16 @@ const Login = ()=>{
                 //navigate to homepage
                 if(response.ok){
                     alert ("login successfull")
-                    navigate("/")
+                    navigate("/home")
                 }else{
                     alert(data.message)
                 }
         } catch (error) {
             console.error("Error:", error);
         }
+    }
+    const handleSignup = ()=>{
+        navigate("/signup")
     }
     return(
         <>
@@ -53,7 +56,9 @@ const Login = ()=>{
                 <input type="password" name="loginpassword" value={formData.loginpassword} id="password" onChange={handleChange} className="shadow-xs bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-200 focus:border-gray-200 block w-full p-2.5" required />
             </div>
             <button type="submit" className="text-white bg-[#ff385c] hover:bg-[#e63950] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Login</button>
+
             </form>
+            <p>Dont have an account?<a href="#" onClick={handleSignup}> Signup</a> instead</p>
 
         </>
     )

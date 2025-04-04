@@ -17,11 +17,11 @@ function App() {
     <Router>
       <Routes>
         <Route path='/signup' element={<Signup />} />
-        <Route path='/login' element={<Login />} />
-        <Route path="/" element={<Homepage />} />
+        <Route path='/' element={<Login />} />
+        <Route path="/home" element={<Homepage />} />
         <Route path="/homes/:home_id" element={<Bnb />} />
-        {/* <Route path='/admin' element={<ProtectedRoute> <Admin/> </ProtectedRoute>} /> */}
-        <Route path='/admin' element={<Admin/>} />
+        <Route path='/admin' element={<ProtectedRoute> <Admin/> </ProtectedRoute>} />
+        {/* <Route path='/admin' element={<Admin/>} /> */}
         <Route path='/checkout/:home_id' element={<Checkout/>}/>
       </Routes>
     </Router>
