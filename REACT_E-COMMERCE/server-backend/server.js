@@ -86,7 +86,6 @@ app.get("/admin", verifyUser, (req, res) => {
     }
 });
 
-
 app.get("/", (req, res) => {
     res.json({ message: "Welcome to Framely!" });
 });
@@ -124,14 +123,14 @@ app.post("/admin", upload.single("frame_image"), async(req,res)=>{
     }
 })
 
-app.get("/pay/:frame_id", async(req, res) => {
+app.delete("/frames/:frame_id", async(req, res) => {
     const frameId = req.params.frame_id;
     try {
         const result = await db.query("DELETE FROM Frames WHERE frame_id = $1", [frameId]);
         if (result.rowCount === 0) {
             return res.status(404).json({ error: "Frame not found" });
         }
-        res.json({ message: "Order being processed" });
+        res.json({ message: "Frame deleted successfully" });
     } catch (error) {
         console.error("CAUGHT ERROR=>", error);
         res.status(500).json({ error: "Internal Server Error" });

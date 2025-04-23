@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URLL
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
     console.log("Environment Variables:", process.env);
-    console.log("API URL:", process.env.REACT_APP_API_BASE_URLL)
+    console.log("API URL:", process.env.REACT_APP_API_BASE_URL)
     const [role, setRole] = useState("customer")
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -31,8 +31,8 @@ const Login = () => {
     };
 
     return(
-        // <body className="login">
-        <div className="container mt-5 login jomolhari-regular">
+        <>
+        <div className=" login jomolhari-regular">
         <div className="row justify-content-center">
             <div className="col-md-6 col-lg-4">
                 <div className="card p-4 loginform">
@@ -58,8 +58,8 @@ const Login = () => {
                 </div>
             </div>
         </div>
-    </div>
-    // </body>
+        </div>
+        </>
     )
 }
 

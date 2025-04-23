@@ -6,7 +6,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 } */
-
+/* #root {
+  max-width: 100%;
+  margin: 0rem;
+  padding: 0rem;
+  text-align: center;
+  border: 2px solid blue; 
+}
+div{
+  border: 3px solid red; 
+}*/
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

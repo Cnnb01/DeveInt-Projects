@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 const HomePage = () => {
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URLL
-  console.log("API_IBASE_URL=>",API_BASE_URL)
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
+  // console.log("API_IBASE_URL=>",API_BASE_URL)
   const [frames, setFrames] = useState([]);
 
   useEffect(() => {
+    let isMounted = true //to prevent mem leaks
     const getFrames = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}/frames`); // Direct API call
@@ -14,16 +15,21 @@ const HomePage = () => {
         }
         const data = await response.json();
         // console.log("FRAMES DATAA=>", data)
-        setFrames(data);
+        if (isMounted){
+          setFrames(data);
+        }
       } catch (error) {
         console.error("Failed to fetch frames", error);
       }
     };
     getFrames();
+    return()=>{
+      isMounted = false;//set isMounted to false only when this component is being cleaned up.
+    }
   },[]);
     return(
         <>
-        <div id="carouselExampleDark"  className="centerround carousel carousel-dark slide">
+        <div id="carouselExampleDark"  className="centerround carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="3000">
         <div className="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -64,7 +70,10 @@ const HomePage = () => {
 
     <div id="about" className="centerround">
         <div className="aboutheader"><p className="jomolhari-headers ">About</p></div>
-        <div className="aboutpara"><p className="jomolhari-regular">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+        <div className="aboutpara"><p className="jomolhari-regular">At Framely, we believe a frame isn’t just something that holds your memories — it’s what makes them unforgettable.
+        Born from a love of art, photography, and the tiny joys in everyday life, our app was designed to make buying the perfect frame feel like less of a chore and more like a vibe, like a hobby, like a form of relaxation.
+        We sell high-quality, stylish, and affordable frames for every kind of memory — whether it's that graduation photo you’ve been meaning to hang for 3 years, a piece of art that shows your personality or the watercolor you bought from that random street artist on vacation (you know the one). Minimalist, boho, classic woodgrain, bold and artsy? We’ve got it all.
+        We built a platform that removes the fluff and gives you exactly what you need: beautiful, durable frames that make your space feel like home.</p>
     </div>
     </div>
 
@@ -82,7 +91,7 @@ const HomePage = () => {
                         Color: {frame.color}<br/>
                         Price:{frame.price}<br/>
                       </p>
-                      <p><a className="btn btn-outline-secondary" href={`/pay/${frame.frame_id}`}>Add to cart</a></p>
+                      <p><a className="btn btn-outline-secondary" href={`/frames/${frame.frame_id}`}>Add to cart</a></p>
                     </div>
                 </div>
                 ))}

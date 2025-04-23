@@ -1,10 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
-// import env from "dotenv";
 
 const Adminpage = () => {
     // const API_BASE_URL = "http://localhost:8000";
-    const API_BASE_URL = process.env.REACT_APP_API_BASE_URLL
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL
 
     const [selectedFile, setselectedFile] = useState(null)
     const [frameSize, setframeSize] = useState("A-5")
@@ -40,8 +39,7 @@ const Adminpage = () => {
 
     return(
         <>
-        {/* <body className="adminpage jomolhari-regular"> */}
-        <div className="container mt-5 adminpage jomolhari-regular">
+        <div className="adminpage jomolhari-regular">
         <div className="row justify-content-center">
         <p><a className="btn btn-outline-secondary" href={`/home`}>Back</a></p>
             <div className="col-lg-6 col-md-8 col-sm-10">
@@ -83,8 +81,7 @@ const Adminpage = () => {
                 </div>
             </div>
         </div>
-    </div>
-    {/* </body> */}
+        </div>
         </>
     )
 }

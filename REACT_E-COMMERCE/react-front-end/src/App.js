@@ -12,7 +12,6 @@ import React, { useState} from "react";
 function App() {
   const [frames, setFrames] = useState([]); //to help update frontend state after deleting
   return (
-    
     <Router>
     <div className="App">
 
@@ -20,7 +19,7 @@ function App() {
       <Route exact path = "/" element={<Login />}/>
       <Route exact path="/home" element={<><NavBar />  <HomePage frames={frames} /></>} />
       <Route path="/admin" element={<ProtectedRoute> <Adminpage /></ProtectedRoute> }/>
-      <Route path="/pay/:frame_id" element={ <Payment setFrames={setFrames}/>} />
+      <Route path="/frames/:frame_id" element={ <Payment setFrames={setFrames}/>} />
     </Routes>
 
     <Footer/>
