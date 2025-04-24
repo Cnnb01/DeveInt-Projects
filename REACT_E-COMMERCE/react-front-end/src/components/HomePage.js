@@ -29,21 +29,21 @@ const HomePage = () => {
   },[]);
     return(
         <>
-        <div id="carouselExampleDark"  className="centerround carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div id="carouselExampleDark"  className="centerround carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="2500">
         <div className="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
           <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div className="carousel-inner">
-          <div className="carousel-item active" data-bs-interval="10000">
+          <div className="carousel-item" >
             <img id="pic1" src="pic11.jpg" className="d-block " alt="frame" />
             <div className="carousel-caption d-none d-md-block">
               <h1 style={{color: "white"}} className="jomolhari-regular">Decorate your walls, elevate your space. </h1>
               <p style={{color: "white"}} className="jomolhari-regular roboto-condensed-normalText2">Frame your moments, frame your style.</p>
             </div>
           </div>
-          <div className="carousel-item" data-bs-interval="2000">
+          <div className="carousel-item">
             <img id="pic1" src="pic55.jpg" className="d-block" alt="frame" />
             <div className="carousel-caption d-none d-md-block">
               <h1 style={{color: "white"}} className="jomolhari-regular" >Frame your memories beautifully.</h1>
@@ -77,10 +77,10 @@ const HomePage = () => {
     </div>
     </div>
 
-    <div id="products" className="centerround">
+    <div id="products" className="centerround gallery-section screenshots-section">
         <div className="aboutheader"><p className="jomolhari-headers ">Available Products</p></div>
-        <div className="prodpara">
-            <div className="productsbox ">
+        <div className="prodpara scrollable-gallery">
+            <div className="productsbox gallery-item">
               { frames.map((frame)=>(
                 <div key={frame.frame_id} className="card col jomolhari-regular" style={{width: "18rem"}}>
                 <img src={`data:image/jpeg;base64,${frame.image_data}`} className="productframes" alt="frame" />

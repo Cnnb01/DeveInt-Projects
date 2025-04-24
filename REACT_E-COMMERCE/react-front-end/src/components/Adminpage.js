@@ -41,7 +41,7 @@ const Adminpage = () => {
         <>
         <div className="adminpage jomolhari-regular">
         <div className="row justify-content-center">
-        <p><a className="btn btn-outline-secondary" href={`/home`}>Back</a></p>
+        <p><a className="btn btn-outline-secondary backbtn" href={`/home`}>Back</a></p>
             <div className="col-lg-6 col-md-8 col-sm-10">
                 <div className="custom-form-container">
                     <form onSubmit={uploadFrame} encType="multipart/form-data" method="post" action="/admin">

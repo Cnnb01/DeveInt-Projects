@@ -16,9 +16,9 @@ const NavBar = () => {
             <Link id="icons" to="/account">
                 <img src="account.png" alt="Account"/>
             </Link>
-            <Link id="icons" to="/search">
+            <a href="#products" id="icons">
                 <img src="search.png" alt="search"/>
-            </Link>
+            </a>
         </nav>
     </div>
     )

@@ -50,7 +50,7 @@ const Payment = ({ setFrames }) => {
             .then(data =>{
                 if (isMounted) {
                     setFrames(data)
-                    navigate("/home")
+                    // navigate("/home")
                 }
                 }
         )
@@ -60,10 +60,13 @@ const Payment = ({ setFrames }) => {
             isMounted = false;
         };
       },[frame_id]);
+      const naavigate = ()=>{
+        navigate("/home")
+      }
     return(
     <>
         <div className=" payments">
-        <p><a className="btn btn-outline-secondary" href={`/home`}>Back</a></p>
+        <p><a className="btn btn-outline-secondary backbtn" href={`/home`}>Back</a></p>
         <div className="d-flex align-items-center justify-content-center vh-100 jomolhari-regular">
         <form className="form-container paymentsform" id="myForm">
             <h4 className="text-center mb-4">Payment Form</h4>
@@ -111,7 +114,7 @@ const Payment = ({ setFrames }) => {
                             <p>Thank you for your purchase! You will receive a prompt to make your payment 🙂</p>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" id="closeModal">Close</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" id="closeModal" onClick={naavigate}>Close</button>
                         </div>
                     </div>
                 </div>

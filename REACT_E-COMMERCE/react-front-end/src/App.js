@@ -17,12 +17,11 @@ function App() {
 
     <Routes>
       <Route exact path = "/" element={<Login />}/>
-      <Route exact path="/home" element={<><NavBar />  <HomePage frames={frames} /></>} />
+      <Route exact path="/home" element={<><NavBar />  <HomePage frames={frames} /> <Footer/></>} />
       <Route path="/admin" element={<ProtectedRoute> <Adminpage /></ProtectedRoute> }/>
       <Route path="/frames/:frame_id" element={ <Payment setFrames={setFrames}/>} />
     </Routes>
 
-    <Footer/>
     </div>
     </Router>
   );
