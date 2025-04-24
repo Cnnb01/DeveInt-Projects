@@ -36,7 +36,7 @@ const HomePage = () => {
           <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div className="carousel-inner">
-          <div className="carousel-item" >
+          <div className="carousel-item active" >
             <img id="pic1" src="pic11.jpg" className="d-block " alt="frame" />
             <div className="carousel-caption d-none d-md-block">
               <h1 style={{color: "white"}} className="jomolhari-regular">Decorate your walls, elevate your space. </h1>

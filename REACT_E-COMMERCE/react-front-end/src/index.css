@@ -184,6 +184,7 @@ code {
 .loginform{
   /* border: 1px solid black; */
   margin-top: 50%;
+  width: auto;
 }
 
 /* payment form */
