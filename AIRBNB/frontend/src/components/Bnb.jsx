@@ -28,7 +28,7 @@ const Bnb = ()=>{
         getHome()
     }, [home_id])
     if (!home) {
-        return <p>Loading...</p>;
+        return <p className="text-center text-gray-600 font-semibold">Loading...</p>;
     }
 
     return (

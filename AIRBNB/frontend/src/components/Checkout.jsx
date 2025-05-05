@@ -55,17 +55,17 @@ const Checkout = () => {
     return (
         <>
             <div className="checkout-container">
-                <h1 className="checkout-title">Checkout</h1>
-                <div className="price-details">PRICE DETAILS</div>
+                <h1 className="checkout-title text-xl font-bold text-gray-700">Checkout</h1>
+                <div className="price-details text-s font-bold text-gray-500">PRICE DETAILS</div>
 
                 <form className="checkout-form">
                     <div className="form-group">
-                        <label className="form-label">Email</label>
-                        <input type="email" name="email" value={paymentdeats.email} onChange={handleChange} placeholder="Enter Email" className="form-input"/>
+                        <label className="form-label text-sm font-bold text-gray-600">Email</label>
+                        <input type="email" name="email" value={paymentdeats.email} onChange={handleChange} placeholder="Enter Email" className="form-input text-sm text-gray-700"/>
                     </div>
                     {/* Payment Method Selection */}
-                    <label htmlFor="paymentform" className="form-label">Select form of payment</label>
-                    <select className="form-select" onChange={handlePaymentMethod} value={paymentMethod}>
+                    <label htmlFor="paymentform" className="form-label text-sm font-bold text-gray-600">Select form of payment</label>
+                    <select className="form-select text-sm text-gray-700" onChange={handlePaymentMethod} value={paymentMethod}>
                     <option value="" disabled>Select Payment Method</option>
                         <option value="paypal">PayPal</option>
                         <option value="visa">Visa</option>
@@ -74,7 +74,7 @@ const Checkout = () => {
                     {/* Payment by visa/paypal */}
                     {(paymentMethod === "visa" || paymentMethod === "paypal")&&(
                         <div className="form-group">
-                            <label className="form-label">Card / PayPal / Visa</label>
+                            <label className="form-label text-sm font-bold text-gray-600">Card / PayPal / Visa</label>
                             <input type="text" name="cardNum" value={paymentdeats.cardNum} onChange={handleChange} placeholder="Enter Card Number" className="form-input"/>
                         </div>
                     )}
