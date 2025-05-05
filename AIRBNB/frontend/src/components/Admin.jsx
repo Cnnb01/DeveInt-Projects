@@ -100,7 +100,7 @@ const Admin = ()=>{
             </div>
             <div>
                 <label className="mb-2 text-sm text-slate-900 font-medium block">Host Name</label>
-                <input type="name" name="hostname" value={form.hostname} onChange={handleChange} placeholder="Private Villa" className="px-4 py-3 bg-gray-100 focus:bg-transparent w-full text-sm text-slate-900 outline-[#333] rounded-sm transition-all" />
+                <input type="name" name="hostname" value={form.hostname} onChange={handleChange} placeholder="Host Name" className="px-4 py-3 bg-gray-100 focus:bg-transparent w-full text-sm text-slate-900 outline-[#333] rounded-sm transition-all" />
             </div>
             <div>
                 <label className="mb-2 text-sm text-slate-900 font-medium block">Amenities available</label>

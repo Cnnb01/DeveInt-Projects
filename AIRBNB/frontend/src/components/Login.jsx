@@ -57,6 +57,7 @@ const Login = ()=>{
     }
     return(
         <>
+    
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <form onSubmit={handleSubmit} className="max-w-sm mx-auto">
@@ -71,8 +72,8 @@ const Login = ()=>{
             <button type="submit" className="text-white bg-[#ff385c] hover:bg-[#e63950] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Login</button>
             <p>Dont have an account?<a href="#" onClick={handleSignup}> Signup</a> instead</p>
         </form>
-            </div>
-            </div>
+        </div>
+    </div>
 
         </>
     )

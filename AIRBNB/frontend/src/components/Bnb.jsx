@@ -33,11 +33,12 @@ const Bnb = ()=>{
 
     return (
         <>
+        <div className="vacationpagediv">
         <button type="submit" onClick={handleBack} className="bnb-back-btn">Back</button>
             <div className="bnb-container">
                 <div className="bnb-content">
                 <div className="bnb-vac">
-                <VacationCard key={home.home_id} image={`data:image/jpeg;base64,${home.home_picture}`} hostname={home.host_name} amenities={home.amenities} pricing={home.cost} location={home.home_location} startdate={home.from_date} enddate={home.to_date} />
+                <VacationCard  key={home.home_id} image={`data:image/jpeg;base64,${home.home_picture}`} hostname={home.host_name} amenities={home.amenities} pricing={home.cost} location={home.home_location} startdate={home.from_date} enddate={home.to_date} />
                 </div>
                     <div className="bnb-details">
                         <p className="bnb-desc">{home.home_desc}</p>
@@ -45,6 +46,7 @@ const Bnb = ()=>{
                     </div>
                 </div>
             </div>
+        </div>
         </>
     );
 }
