@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Navigate } from "react-router-dom"
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({ children, requiredRole }) => {
     const [authenticated, setAuthenticated] = useState(false)
     const [loading, setLoading] = useState(true)
 
@@ -14,9 +14,9 @@ const ProtectedRoute = ({ children }) => {
                 const data = await response.json();
 
                 // console.log("RESPONSEE.OK SAYSS=>",response.ok)
-                console.log("DATA.MESSAGE SAYYS=>",data.message)
+                console.log("DATA.MESSAGE SAYYS=>",data.role)
 
-                if (data.message === "Welcome Admin! You have access to this page.") {
+                if (response.ok && data.role === requiredRole) {
                     setAuthenticated(true)
                 }else{
                     setAuthenticated(false)
@@ -28,7 +28,7 @@ const ProtectedRoute = ({ children }) => {
             }
         }
         checkAuth()
-    }, [])
+    }, [requiredRole])
 
     if (loading){
         return <h1>Loading...</h1>

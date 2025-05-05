@@ -70,7 +70,10 @@ button:focus-visible {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-weight: 500;
 } */
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* @import "tailwindcss"; */
 @import 'flowbite';
 @import "flowbite/src/themes/default";
 /* @plugin "flowbite/plugin";
@@ -497,4 +500,11 @@ p{
 }
 .modal-close-btn:hover {
   background: #e0484e;
+}
+
+/* Add this temporarily in your CSS or inline <style> */
+.datepicker,
+.datepicker-backdrop,
+.datepicker-container {
+  display: none !important;
 }

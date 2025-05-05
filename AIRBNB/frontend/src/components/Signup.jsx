@@ -67,9 +67,14 @@ const Signup = ()=>{
 
     }
 
+    const handleLogin = ()=>{
+        navigate("/")
+    }
+
     return(
         <>
-        SIGNUP
+        <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
             <form onSubmit={handleSubmit} className="max-w-sm mx-auto">
             <div className="mb-5">
                 <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-600">Your Full name</label>
@@ -90,8 +95,10 @@ const Signup = ()=>{
                 <label htmlFor="terms" className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">I agree with the <a href="#" className="text-[#ff385c] hover:underline dark:text-[#e63950]">terms and conditions</a></label>
             </div>
             <button type="submit" className="text-white bg-[#ff385c] hover:bg-[#e63950] focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Register new account</button>
+            <p>Already have an account?<a href="#" onClick={handleLogin}> Login</a> instead</p>
             </form>
-
+        </div>
+        </div>
         </>
     )
 }

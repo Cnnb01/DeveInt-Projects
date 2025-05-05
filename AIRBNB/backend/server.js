@@ -100,7 +100,7 @@ app.post("/", async(req,res)=>{
 //step3:create middleware to carryout verification
 const verifyAdmin = (req,res,next)=>{
     const token = req.cookies.token;
-    const newdecoded = jwt.decode(token);
+    // const newdecoded = jwt.decode(token);
     jwt.verify(token, SECRET_KEY, (err, decoded) => {
         if (err) {
             // console.log("JWT Verification Error:", err.message);
@@ -113,11 +113,7 @@ const verifyAdmin = (req,res,next)=>{
 };
 
 app.get("/admin", verifyAdmin, (req, res) => {
-    if(req.user.email === "admin@gmail.com"){
-        res.json({ message: "Welcome Admin! You have access to this page." });
-    }else {
-        res.status(403).json({ message: "Access denied" });
-    }
+    res.json({ role: req.user.email });
 });
 
 app.post("/admin", upload.single("image"), async (req,res)=>{

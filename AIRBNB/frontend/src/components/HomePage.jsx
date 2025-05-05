@@ -34,7 +34,7 @@ const filteredHomes = searchTerm ? homes.filter((home)=>
                 <VacationCard key={home.home_id} home_id={home.home_id} image={`data:image/jpeg;base64,${home.home_picture}`} hostname={home.host_name} amenities={home.amenities} pricing={home.cost} location={home.home_location} startdate={home.from_date} enddate={home.to_date}/>
             ))
         ):(
-            <p>No results found</p>
+            <h1>Loading Homes</h1>
         )}
         {/* {homes.map((home)=>(
         ))} */}

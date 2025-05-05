@@ -20,7 +20,7 @@ function App() {
         <Route path='/' element={<Login />} />
         <Route path="/home" element={<Homepage />} />
         <Route path="/homes/:home_id" element={<Bnb />} />
-        <Route path='/admin' element={<ProtectedRoute> <Admin/> </ProtectedRoute>} />
+        <Route path='/admin' element={<ProtectedRoute requiredRole="admin@gmail.com"> <Admin/> </ProtectedRoute>} />
         {/* <Route path='/admin' element={<Admin/>} /> */}
         <Route path='/checkout/:home_id' element={<Checkout/>}/>
       </Routes>
