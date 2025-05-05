@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import airbnbLogo from '../assets/Icons/airbnb.svg';
-import worldIcon from '../assets/Icons/world.png';
 import { useNavigate } from 'react-router-dom';
 
 const NavBar = ({onSearch}) => {//enables you to use it elsewhere
-    const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate()
 
     const handleLogout = async()=>{
@@ -46,20 +44,7 @@ const NavBar = ({onSearch}) => {//enables you to use it elsewhere
 
                 {/* Right Section */}
                 <div className="nav-options">
-                    <button className="host-btn">Airbnb your home</button>
-                    <img src={worldIcon} className="icon" alt="Global icon" />
-                    {/* Account Dropdown */}
-                    <button onClick={() => setIsOpen(!isOpen)} className="account-btn">Account</button>
-                    {isOpen && (
-                        <div className="dropdown">
-                            <ul>
-                                <li><a href="#">Dashboard</a></li>
-                                <li><a href="#">Settings</a></li>
-                                <li><a href="#">Earnings</a></li>
-                                <li><a href="#" onClick={handleLogout}>Sign out</a></li>
-                            </ul>
-                        </div>
-                    )}
+                    <button onClick={handleLogout} className="account-btn">Log out</button>
                 </div>
             </nav>
         </>
