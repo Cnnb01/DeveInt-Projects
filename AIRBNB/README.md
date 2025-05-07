@@ -1,33 +1,33 @@
+# 🏠 Airbnb Clone — Minimalist Property Listing Site
 
-# 🖼 Framely — Frame Selling E-Commerce Website
-
-A fully responsive e-commerce website built using **React** and **Bootstrap CSS**, designed for selling decorative frames and wall art.
-Framely offers a clean, aesthetic shopping experience where users can browse frame collections, view details, and add items to their cart.
-
+A clean and interactive Airbnb-style clone built using **React** and **Tailwind CSS**, focusing on showcasing property listings.  
+The app provides a modern UI for browsing rental spaces, with dynamic property cards and filterable content.
 ---
 
 ## ✨ Features
 
-- 🖼 Browse a collection of frames with images and pricing
-- 🛒 Add frames to cart
-- 💵Purchase available frames
-- 📱 Responsive design optimized for mobile and desktop
+- 🏘 View listings for various rental properties
+- 🖼 Modern and minimal UI with soft hover effects
+- 🔍 Filter by price, type, and location (static filters)
+- 📱 Fully responsive design for mobile and tablet
 
 ---
 ## 📁 Project Structure
 
 ```
-/frontend        # Frontend (React with CRA)
+/frontend        # Frontend (React with Vite)
 /backend       # Backend (Express.js)
 /backend(pg admin)      # SQL setup (tables and seed data)
 ```
 ---
+---
 
 ## ⚙️ Tech Stack
 
-- **Frontend:** React, Bootstrap CSS
-- **State Management:** useState, useEffect
-- **Other Tools:** CRA, Pexels
+- **Frontend:** React, Tailwind CSS
+- **Routing:** React Router DOM
+- **State Management:** useState
+- **Other Tools:** Vite, Pexels
 
 ---
 
@@ -59,7 +59,7 @@ Framely offers a clean, aesthetic shopping experience where users can browse fra
 > `http://localhost:8000`
 
 ---
-### 🎨 Frontend Setup (CRA)
+### 🎨 Frontend Setup (Vite)
 
 1. Navigate to the frontend directory:
    ```bash
@@ -73,11 +73,11 @@ Framely offers a clean, aesthetic shopping experience where users can browse fra
 
 3. Run the development server:
    ```bash
-   npm start
+   npm run dev
    ```
 
 > App runs on:
-> `http://localhost:3000`
+> `http://localhost:5173`
 
 ---
 
@@ -94,9 +94,9 @@ Made with 💙 by **Charity Nyamamba**
 ## 📸 Screenshots
 
 > Login page ![alt text](./screenshots/login.png)
-> Homepage Dashboard ![alt text](./screenshots/home1.png)
-> Homepage Dashboard(part 2) ![alt text](./screenshots/home2.png)
-> Payment's page for single frame ![alt text](./screenshots/pay.png)
+> Homepage Dashboard ![alt text](./screenshots/home.png)
+> Single bnb page ![alt text](./screenshots/bnb.png)
+> Payment's page for single bnb ![alt text](./screenshots/payment.png)
 > Admin's page ![alt text](./screenshots/admin.png)
 
 ---

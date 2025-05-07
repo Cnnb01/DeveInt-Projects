@@ -91,7 +91,6 @@ const Admin = ()=>{
     
     return(
         <>
-        <h1>Admin page woohoo!</h1>
         <form onSubmit={handleSubmit} className="max-w-md mx-auto space-y-5 mt-4">
             <div className="max-w-md mx-auto">
                 <label className="text-base text-slate-900 font-medium mb-3 block">Upload bnb picture</label>
