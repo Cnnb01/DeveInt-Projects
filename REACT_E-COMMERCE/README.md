@@ -85,7 +85,6 @@ Framely offers a clean, aesthetic shopping experience where users can browse fra
 
 Made with 💙 by **Charity Nyamamba**
 
-- 📧 Email: [nyamambanyaguch@gmail.com](mailto:nyamambanyaguch@gmail.com)
 - 🌐 LinkedIn: [Charity](https://www.linkedin.com/in/charity-nyamamba/)
 
 

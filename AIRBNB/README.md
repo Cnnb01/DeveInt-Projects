@@ -85,7 +85,6 @@ The app provides a modern UI for browsing rental spaces, with dynamic property c
 
 Made with 💙 by **Charity Nyamamba**
 
-- 📧 Email: [nyamambanyaguch@gmail.com](mailto:nyamambanyaguch@gmail.com)
 - 🌐 LinkedIn: [Charity](https://www.linkedin.com/in/charity-nyamamba/)
 
 
